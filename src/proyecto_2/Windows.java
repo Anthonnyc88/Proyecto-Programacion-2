@@ -64,8 +64,14 @@ public class Windows extends javax.swing.JFrame {
         });
 
         bntSalir.setText("Exit");
+        bntSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntSalirActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setText("Menu Principal");
+        jLabel1.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel1.setText("Main menu");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,7 +90,7 @@ public class Windows extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(171, 171, 171)
                         .addComponent(jLabel1)))
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,6 +120,11 @@ public class Windows extends javax.swing.JFrame {
         Windows_game2 a = new Windows_game2();
         a.setVisible(true);
     }//GEN-LAST:event_bntJuego2ActionPerformed
+
+    private void bntSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_bntSalirActionPerformed
 
     /**
      * @param args the command line arguments

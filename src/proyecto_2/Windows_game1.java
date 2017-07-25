@@ -34,6 +34,11 @@ public class Windows_game1 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         bntReturn.setText("Regresar");
+        bntReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntReturnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout logica1Layout = new javax.swing.GroupLayout(logica1);
         logica1.setLayout(logica1Layout);
@@ -87,8 +92,14 @@ public class Windows_game1 extends javax.swing.JFrame {
     private void bntIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntIniciarActionPerformed
         // TODO add your handling code here:
         logica1.inicio();
-      
+
     }//GEN-LAST:event_bntIniciarActionPerformed
+
+    private void bntReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntReturnActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new Windows().setVisible(true);
+    }//GEN-LAST:event_bntReturnActionPerformed
 
     /**
      * @param args the command line arguments

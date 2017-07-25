@@ -32,6 +32,11 @@ public class Windows_game2 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         bntRegresar.setText("Regresar");
+        bntRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntRegresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -52,6 +57,12 @@ public class Windows_game2 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bntRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntRegresarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new Windows().setVisible(true);
+    }//GEN-LAST:event_bntRegresarActionPerformed
 
     /**
      * @param args the command line arguments
