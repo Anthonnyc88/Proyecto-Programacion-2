@@ -111,8 +111,8 @@ public class Windows extends javax.swing.JFrame {
 
     private void bntJuego1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntJuego1ActionPerformed
         // TODO add your handling code here:
-        Windows_game1 a = new Windows_game1();
-        a.setVisible(true);
+        //Windows_game1 a = new Windows_game1();
+        //a.setVisible(true);
     }//GEN-LAST:event_bntJuego1ActionPerformed
 
     private void bntJuego2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntJuego2ActionPerformed
