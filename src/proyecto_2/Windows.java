@@ -6,6 +6,7 @@
 package proyecto_2;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
@@ -110,9 +111,7 @@ public class Windows extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntJuego1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntJuego1ActionPerformed
-        // TODO add your handling code here:
-        //Windows_game1 a = new Windows_game1();
-        //a.setVisible(true);
+        Windows_game1 a = new Windows_game1();
     }//GEN-LAST:event_bntJuego1ActionPerformed
 
     private void bntJuego2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntJuego2ActionPerformed
