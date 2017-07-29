@@ -26,23 +26,21 @@ public class Super_Metodo extends Thread {
     }
     //sobre escribiendo el metodo
     @Override
+    
+    //Algoritmo de los nadadores , funciona con hilo que hace que los nadadores se muevan con una velocidad Random
     public void run(){
          Random rnd= new Random();
         int numero;
         for(int i=limite-150; i>0; i--){
-           
-            numero =0+ rnd.nextInt(10);
-            //posicionr el label donde querenos
+            numero =0+ rnd.nextInt(15);
             System.out.println(getName()+":"+i);
-            nadador.setBounds(posicionX, i, 73, 100);
+            nadador.setBounds(posicionX, i, 73, 100); //posicionr el label con su tamaño y ancho
             try{
-                //velocidad del hilo con el nadador
                 sleep(numero);
+                //velocidad del hilo con el nadador que recibe la varibale random
                
             }catch(Exception e){
-                
-            }
-            
+                           }
         }
         //no se ejecute los hilos al mismo tiempo
          System.out.println("Final de competencia"+getName());

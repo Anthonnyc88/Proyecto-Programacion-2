@@ -18,7 +18,5 @@ public class Proyecto_2 {
         // TODO code application logic here
         Windows a = new Windows();
         a.setVisible(true);
-        System.out.println("Prueba");
     }
-    
 }

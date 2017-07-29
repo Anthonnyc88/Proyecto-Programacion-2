@@ -16,6 +16,7 @@ public class Windows_game2 extends javax.swing.JFrame {
      */
     public Windows_game2() {
         initComponents();
+            setResizable(false); //No puede cambiar las dimensiones de la ventana
     }
 
     /**
