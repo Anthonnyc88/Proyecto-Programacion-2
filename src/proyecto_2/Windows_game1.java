@@ -22,10 +22,18 @@ import javax.swing.JLabel;
  */
 public class Windows_game1 extends JFrame {
 
-    JLabel nadador1, nadador2, nadador3, nadador4, nadador5, piscina;
+    JLabel nadador1, nadador2, nadador3, nadador4, nadador5, piscina , linea1 , linea2;
+    
     JButton bntInicio , bntRegresar;
     int x = 50, y = 0, Ancho = 1000, alto = 700;
+   
 
+    private void initComponents() {
+        JLabel jLabel3 = new javax.swing.JLabel();
+        JLabel jLabel5 = new javax.swing.JLabel();
+        JLabel jLabel6 = new javax.swing.JLabel();
+    }
+    
     public Windows_game1() {
         super("Competencia de natacion");
         
@@ -60,27 +68,27 @@ public class Windows_game1 extends JFrame {
         //Hacemos los JLabel de cada nadador
         nadador1 = new JLabel();
         piscina.add(nadador1); //Agrega la imagen al panel
-        nadador1.setIcon(new ImageIcon(getClass().getResource("/Imagenes/1.png")));
-        nadador1.setBounds(30, alto - 150, 73, 100);
-
+        nadador1.setIcon(new ImageIcon(getClass().getResource("/Imagenes/nadador.gif")));
+        nadador1.setBounds(30, alto - 150, 73,100);
         nadador2 = new JLabel();
         piscina.add(nadador2);
-        nadador2.setIcon(new ImageIcon(getClass().getResource("/Imagenes/2.gif")));
-        nadador2.setBounds(150, alto - 150, 73, 100);
+        nadador2.setIcon(new ImageIcon(getClass().getResource("/Imagenes/nadador.gif")));
+        nadador2.setBounds(150, alto- 150, 73, 100);
 
         nadador3 = new JLabel();
         piscina.add(nadador3);
-        nadador3.setIcon(new ImageIcon(getClass().getResource("/Imagenes/1.png")));
+        nadador3.setIcon(new ImageIcon(getClass().getResource("/Imagenes/nadador.gif")));
         nadador3.setBounds(280, alto - 150, 73, 100);
 
         nadador4 = new JLabel();
         piscina.add(nadador4);
-        nadador4.setIcon(new ImageIcon(getClass().getResource("/Imagenes/4.png")));
+        nadador4.setIcon(new ImageIcon(getClass().getResource("/Imagenes/nadador.gif")));
         nadador4.setBounds(400, alto - 150, 73, 100);
-
+        
+     
         nadador5 = new JLabel();
         piscina.add(nadador5);
-        nadador5.setIcon(new ImageIcon(getClass().getResource("/Imagenes/5.png")));
+        nadador5.setIcon(new ImageIcon(getClass().getResource("/Imagenes/nadador.gif")));
         nadador5.setBounds(500, alto - 150, 73, 100);
         
         

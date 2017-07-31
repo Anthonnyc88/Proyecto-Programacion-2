@@ -28,7 +28,7 @@ public class Windows extends javax.swing.JFrame {
         setTitle("Proyecto 2 de Programacion");
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/cubo.jpg")).getImage());
         ((JPanel) getContentPane()).setOpaque(false);
-        ImageIcon uno = new ImageIcon(this.getClass().getResource("/Imagenes/cubo.jpg"));
+        ImageIcon uno = new ImageIcon(this.getClass().getResource("/Imagenes/Col2.gif"));
         JLabel fondo = new JLabel();
         fondo.setIcon(uno);
         getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
@@ -81,46 +81,50 @@ public class Windows extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 109, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bntJuego2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bntJuego1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
-                .addGap(107, 107, 107))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(jLabel1))
+                        .addGap(101, 101, 101)
+                        .addComponent(bntJuego1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(bntJuego2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 117, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addComponent(bntSalir))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(175, 175, 175)
-                        .addComponent(bntSalir)))
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
                 .addComponent(bntJuego1)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(bntJuego2)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(bntSalir)
-                .addGap(49, 49, 49))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntJuego1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntJuego1ActionPerformed
-        Windows_game1 a = new Windows_game1();
+       Windows_start1 a = new Windows_start1();
+       a.setVisible(true);
     }//GEN-LAST:event_bntJuego1ActionPerformed
 
     private void bntJuego2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntJuego2ActionPerformed
         // TODO add your handling code here:
-        Windows_game2 a = new Windows_game2();
+        Windows_start2 a = new Windows_start2();
         a.setVisible(true);
     }//GEN-LAST:event_bntJuego2ActionPerformed
 
