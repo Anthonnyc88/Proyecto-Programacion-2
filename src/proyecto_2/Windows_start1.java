@@ -26,7 +26,7 @@ public class Windows_start1 extends javax.swing.JFrame {
         setTitle("Proyecto 2 de Programacion");
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/cubo.jpg")).getImage());
         ((JPanel) getContentPane()).setOpaque(false);
-        ImageIcon uno = new ImageIcon(this.getClass().getResource("/Imagenes/Fondo.gif"));
+        ImageIcon uno = new ImageIcon(this.getClass().getResource("/Imagenes/Katie.gif"));
         JLabel fondo = new JLabel();
         fondo.setIcon(uno);
         getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
@@ -42,8 +42,13 @@ public class Windows_start1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jComboBox1 = new javax.swing.JComboBox();
         bntGame = new javax.swing.JButton();
         bntAtras = new javax.swing.JButton();
+        jSpinnerNadadores = new javax.swing.JSpinner();
+        jLabel1 = new javax.swing.JLabel();
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,6 +66,11 @@ public class Windows_start1 extends javax.swing.JFrame {
             }
         });
 
+        jSpinnerNadadores.setModel(new javax.swing.SpinnerNumberModel(2, 2, 5, 1));
+
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Cantidad nadadores");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,19 +78,28 @@ public class Windows_start1 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(264, 264, 264)
-                        .addComponent(bntGame))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(bntAtras)))
-                .addContainerGap(294, Short.MAX_VALUE))
+                        .addComponent(bntAtras))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bntGame)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(jSpinnerNadadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(177, 177, 177)
+                .addContainerGap(45, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSpinnerNadadores, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(84, 84, 84)
                 .addComponent(bntGame)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
+                .addGap(4, 4, 4)
                 .addComponent(bntAtras)
                 .addContainerGap())
         );
@@ -91,6 +110,7 @@ public class Windows_start1 extends javax.swing.JFrame {
     private void bntGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGameActionPerformed
         // TODO add your handling code here:
          Windows_game1 a = new Windows_game1();
+         dispose();
     }//GEN-LAST:event_bntGameActionPerformed
 
     private void bntAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAtrasActionPerformed
@@ -138,5 +158,8 @@ public class Windows_start1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntAtras;
     private javax.swing.JButton bntGame;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JSpinner jSpinnerNadadores;
     // End of variables declaration//GEN-END:variables
 }

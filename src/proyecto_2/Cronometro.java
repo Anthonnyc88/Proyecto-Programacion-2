@@ -1,206 +1,131 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package proyecto_2;
 
+/**
+ *
+ * @author Anthonny
+ */
+
+    
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Timer;
-
-/**
- * @author JCarlos;
- */
-public class Cronometro extends javax.swing.JFrame {
-
-    public Cronometro() {
-        initComponents();
-        setLocationRelativeTo(null);
-        t = new Timer(10, acciones);
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.UIManager;
+ 
+public class Cronometro extends JFrame implements Runnable, ActionListener 
+{ 
+    public Cronometro()
+    {
+        setTitle("Cronometro");
+        setSize( 300, 200 );
+        setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        setLayout( new BorderLayout() );
+ 
+        //Etiqueta donde se colocara el tiempo 
+        tiempo = new JLabel( "00:00:000" );
+        tiempo.setFont( new Font( Font.SERIF, Font.BOLD, 50 ) );
+        tiempo.setHorizontalAlignment( JLabel.CENTER );
+        tiempo.setForeground( Color.BLUE );
+        tiempo.setBackground( Color.WHITE );
+        tiempo.setOpaque( true );
+ 
+        add( tiempo, BorderLayout.CENTER );
+ 
+        //Boton iniciar
+        JButton btn = new JButton( "Iniciar" );
+        btn.addActionListener( this );
+        add( btn, BorderLayout.NORTH );
+ 
+        //Boton reiniciar inicia nuevamente desde 0
+        JButton btnP = new JButton( "Reiniciar" );
+        btnP.addActionListener( this );
+        add( btnP, BorderLayout.SOUTH );
+         
+        this.setLocationRelativeTo( null );
+        setVisible( true );
     }
-
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        etiquetaReloj = new javax.swing.JLabel();
-        etiquetaTitulo = new javax.swing.JLabel();
-        etiquetaTiempo = new javax.swing.JLabel();
-        btnStart = new javax.swing.JButton();
-        btnPause = new javax.swing.JButton();
-        btnStop = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cronómetro - Programación y más !");
-
-        etiquetaReloj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reloj.png"))); // NOI18N
-
-        etiquetaTitulo.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        etiquetaTitulo.setText("Cronómetro");
-
-        etiquetaTiempo.setFont(new java.awt.Font("Lucida Sans", 0, 18)); // NOI18N
-        etiquetaTiempo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiquetaTiempo.setText("00:00:00:00");
-
-        btnStart.setText("Iniciar");
-        btnStart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStartActionPerformed(evt);
-            }
-        });
-
-        btnPause.setText("Pausar");
-        btnPause.setEnabled(false);
-        btnPause.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPauseActionPerformed(evt);
-            }
-        });
-
-        btnStop.setText("Detener");
-        btnStop.setEnabled(false);
-        btnStop.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStopActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(etiquetaReloj)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(etiquetaTiempo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(etiquetaTitulo)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnPause, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnStop, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(etiquetaTitulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(etiquetaTiempo)
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnStart)
-                            .addComponent(btnPause)
-                            .addComponent(btnStop)))
-                    .addComponent(etiquetaReloj))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-    private Timer t;
-    private int h, m, s, cs;
-    private ActionListener acciones = new ActionListener(){
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            ++cs; 
-            if(cs==100){
-                cs = 0;
-                ++s;
-            }
-            if(s==60) 
-            {
-                s = 0;
-                ++m;
-            }
-            if(m==60)
-            {
-                m = 0;
-                ++h;
-            }
-            actualizarLabel();
-        }
-        
-    };
-    
-    private void actualizarLabel() {
-        String tiempo = (h<=9?"0":"")+h+":"+(m<=9?"0":"")+m+":"+(s<=9?"0":"")+s+":"+(cs<=9?"0":"")+cs;
-        etiquetaTiempo.setText(tiempo);
-    }
-    
-    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-        t.start();
-        btnStart.setEnabled(false);
-        btnStart.setText("Reanudar");
-        btnPause.setEnabled(true);
-        btnStop.setEnabled(true);
-    }//GEN-LAST:event_btnStartActionPerformed
-
-    private void btnPauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPauseActionPerformed
-        t.stop();
-        btnStart.setEnabled(true);
-        btnPause.setEnabled(false);
-    }//GEN-LAST:event_btnPauseActionPerformed
-
-    private void btnStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStopActionPerformed
-        if(t.isRunning()) 
+  
+    public void run(){
+        Integer minutos = 0 , segundos = 0, milesimas = 0;
+        //min es minutos, seg es segundos y mil es milesimas de segundo
+        String min="", seg="", mil="";
+        try
         {
-            t.stop();
-            btnStart.setEnabled(true);
-        }
-        btnStart.setText("Iniciar");
-        btnPause.setEnabled(false);
-        btnStop.setEnabled(false);
-        h=0; m=0; s=0; cs=0;
-        actualizarLabel();
-    }//GEN-LAST:event_btnStopActionPerformed
-
-
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+            //Mientras cronometroActivo sea verdadero entonces seguira
+            //aumentando el tiempo
+            while( cronometroActivo )
+            {
+                Thread.sleep( 4 );
+                //Incrementamos 4 milesimas de segundo
+                milesimas += 4;
+                 
+                //Cuando llega a 1000 osea 1 segundo aumenta 1 segundo
+                //y las milesimas de segundo de nuevo a 0
+                if( milesimas == 1000 )
+                {
+                    milesimas = 0;
+                    segundos += 1;
+                    //Si los segundos llegan a 60 entonces aumenta 1 los minutos
+                    //y los segundos vuelven a 0
+                    if( segundos == 60 )
+                    {
+                        segundos = 0;
+                        minutos++;
+                    }
                 }
+ 
+                //Esto solamente es estetica para que siempre este en formato
+                //00:00:000
+                if( minutos < 10 ) min = "0" + minutos;
+                else min = minutos.toString();
+                if( segundos < 10 ) seg = "0" + segundos;
+                else seg = segundos.toString();
+                 
+                if( milesimas < 10 ) mil = "00" + milesimas;
+                else if( milesimas < 100 ) mil = "0" + milesimas;
+                else mil = milesimas.toString();
+                 
+                //Colocamos en la etiqueta la informacion
+                tiempo.setText( min + ":" + seg + ":" + mil );                
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cronometro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cronometro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cronometro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cronometro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Cronometro().setVisible(true);
-            }
-        });
+        }catch(Exception e){}
+        //Cuando se reincie se coloca nuevamente en 00:00:000
+        tiempo.setText( "00:00:000" );
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPause;
-    private javax.swing.JButton btnStart;
-    private javax.swing.JButton btnStop;
-    private javax.swing.JLabel etiquetaReloj;
-    private javax.swing.JLabel etiquetaTiempo;
-    private javax.swing.JLabel etiquetaTitulo;
-    // End of variables declaration//GEN-END:variables
+  
+    //Esto es para el boton iniciar y reiniciar
+    public void actionPerformed( ActionEvent evt ) {
+        Object o = evt.getSource();
+            iniciarCronometro();
+    }
+  
+    //Iniciar el cronometro poniendo cronometroActivo 
+    //en verdadero para que entre en el while
+    public void iniciarCronometro() {
+        cronometroActivo = true;
+        hilo = new Thread( this );
+        hilo.start();
+    }
+  
+    //Esto es para parar el cronometro
+    public void pararCronometro(){
+        cronometroActivo = false;
+    }
+  
+    public static void main(String[] args) {
+        new Cronometro();
+    }
+  
+    JLabel tiempo;
+    Thread hilo;
+    boolean cronometroActivo;
 }
