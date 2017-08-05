@@ -17,7 +17,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
+import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import static proyecto_2.Cronometro.h0;
+import static proyecto_2.Cronometro.m0;
+import static proyecto_2.Cronometro.s0;
+import static proyecto_2.Cronometro.saber;
 
 /**
  *
@@ -32,8 +37,7 @@ public class Windows_game1 extends JFrame {
 
     public Windows_game1() {
         super("Competencia de natacion");
-        ArrayList<String> ListaNadadores = new ArrayList<>();
-
+        
         //Permiter poner nuestros componentes donde queranos
         getContentPane().setLayout(null);
 
@@ -42,9 +46,17 @@ public class Windows_game1 extends JFrame {
 //                new Integer(0), // Límite inferior 
 //                new Integer(5), // Límite superior 
 //                new Integer(1) // incremento-decremento 
+        
+        
 //        );
         
          
+        ArrayList<String> ListaNadadores = new ArrayList<>();
+       ListaNadadores.add("Anthonny");
+       ListaNadadores.add("Maria");
+       ListaNadadores.add("Kendall");
+       ListaNadadores.add("CaraVaca");
+       ListaNadadores.add("Tavo");
 
         piscina = new JLabel();
         getContentPane().add(piscina);
@@ -56,6 +68,8 @@ public class Windows_game1 extends JFrame {
         piscina.add(nadador1); //Agrega la imagen al panel
         nadador1.setIcon(new ImageIcon(getClass().getResource("/Imagenes/nadador.gif")));
         nadador1.setBounds(30, alto - 150, 73, 100);
+       
+        
 
         nadador2 = new JLabel();
         piscina.add(nadador2);
@@ -76,6 +90,13 @@ public class Windows_game1 extends JFrame {
         piscina.add(nadador5);
         nadador5.setIcon(new ImageIcon(getClass().getResource("/Imagenes/nadador.gif")));
         nadador5.setBounds(500, alto - 150, 73, 100);
+        
+        {
+        
+        
+        
+        
+        
 
         //boton de inicio del juego
         ImageIcon start = new ImageIcon(getClass().getResource("/Imagenes/5.png"));//Colocamos la imagen en el boton
@@ -88,22 +109,32 @@ public class Windows_game1 extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-
                 System.out.println("Inicio");
                 //Aqui llamo los metodos de los hilos de cada nadador
+                //new Cronometro();
                 Super_Metodo hiloNadador1 = new Super_Metodo(30, alto, nadador1);
                 Super_Metodo hiloNadador2 = new Super_Metodo(150, alto, nadador2);
                 Super_Metodo hiloNadador3 = new Super_Metodo(280, alto, nadador3);
                 Super_Metodo hiloNadador4 = new Super_Metodo(400, alto, nadador4);
                 Super_Metodo hiloNadador5 = new Super_Metodo(500, alto, nadador5);
+                
+                
+              
 
-                Cronometro a = new Cronometro(); //Llamo el metodo del cronometro
+               
 
                 hiloNadador1.start(); //Arranca la ejecucion de cada hilo
                 hiloNadador2.start();
                 hiloNadador3.start();
                 hiloNadador4.start();
                 hiloNadador5.start();
+                
+                
+          
+            
+        
+                
+                
             }
         });
 
@@ -113,5 +144,10 @@ public class Windows_game1 extends JFrame {
         setResizable(false);//no poder cambiar dimensiones
 
     }
+    
+    
+    }
+    
+    //
 
 }

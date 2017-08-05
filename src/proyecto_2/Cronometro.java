@@ -16,116 +16,131 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.UIManager;
+import static proyecto_2.Cronometro.saber;
  
 public class Cronometro extends JFrame implements Runnable, ActionListener 
 { 
-    public Cronometro()
-    {
-        setTitle("Cronometro");
-        setSize( 300, 200 );
+    JLabel tiempo;
+    public static String h0, m0, s0;
+
+    
+    public Cronometro() {
+        
+        setTitle("Cronómetro Reloj");
+        setSize( 260, 104);
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         setLayout( new BorderLayout() );
- 
-        //Etiqueta donde se colocara el tiempo 
-        tiempo = new JLabel( "00:00:000" );
+
+        //Etiqueta donde se colocara el tiempo
+        tiempo = new JLabel( h0+":"+m0+":"+s0 );
         tiempo.setFont( new Font( Font.SERIF, Font.BOLD, 50 ) );
         tiempo.setHorizontalAlignment( JLabel.CENTER );
         tiempo.setForeground( Color.BLUE );
         tiempo.setBackground( Color.WHITE );
         tiempo.setOpaque( true );
- 
-        add( tiempo, BorderLayout.CENTER );
- 
-        //Boton iniciar
-        JButton btn = new JButton( "Iniciar" );
-        btn.addActionListener( this );
-        add( btn, BorderLayout.NORTH );
- 
-        //Boton reiniciar inicia nuevamente desde 0
-        JButton btnP = new JButton( "Reiniciar" );
-        btnP.addActionListener( this );
-        add( btnP, BorderLayout.SOUTH );
-         
-        this.setLocationRelativeTo( null );
+        add( tiempo, BorderLayout.NORTH );
+        
         setVisible( true );
-    }
-  
-    public void run(){
-        Integer minutos = 0 , segundos = 0, milesimas = 0;
-        //min es minutos, seg es segundos y mil es milesimas de segundo
-        String min="", seg="", mil="";
-        try
-        {
+        
+        Integer horas, minutos, segundos;
+        horas = Integer.parseInt(h0);
+        minutos = Integer.parseInt(m0);
+        segundos = Integer.parseInt(s0);
+
+        String hor=h0, min=m0, seg;
+        
+        long t1, t2;
+        String st1, st2;
+        Calendar ahora1 = Calendar.getInstance();
+        t1 = ahora1.getTimeInMillis();
+        st1 = Long.toString(t1);
+
+        try {
+            
             //Mientras cronometroActivo sea verdadero entonces seguira
             //aumentando el tiempo
-            while( cronometroActivo )
-            {
-                Thread.sleep( 4 );
-                //Incrementamos 4 milesimas de segundo
-                milesimas += 4;
-                 
-                //Cuando llega a 1000 osea 1 segundo aumenta 1 segundo
-                //y las milesimas de segundo de nuevo a 0
-                if( milesimas == 1000 )
-                {
-                    milesimas = 0;
+
+            while( true ) {
+
+                //La siguiente linea es para hacer un wait ayuda
+                //para la precisión del siguiente proceso.- demorar un segundo
+                Thread.sleep( 500 );
+                
+                //Esto es lo que provoca la demorada del segundo exacto
+                Calendar ahora2 = Calendar.getInstance();
+                t2 = ahora2.getTimeInMillis();
+                st2 = Long.toString(t2);
+                if (st2.charAt(st2.length()-4)!=st1.charAt(st1.length()-4)) { 
                     segundos += 1;
-                    //Si los segundos llegan a 60 entonces aumenta 1 los minutos
-                    //y los segundos vuelven a 0
-                    if( segundos == 60 )
-                    {
-                        segundos = 0;
-                        minutos++;
-                    }
-                }
- 
-                //Esto solamente es estetica para que siempre este en formato
-                //00:00:000
+                    Calendar ahora3 = Calendar.getInstance();
+                    t1 = ahora3.getTimeInMillis();
+                    st1 = Long.toString(t1);
+                }    
+                //fin de lo que provoca la demorada del segundo exacto
+                
+                if ( segundos == 60 ) {
+                    segundos=0;
+                    minutos += 1;
+                }    
+                if( minutos == 60 ) {
+                    minutos = 0;
+                    horas++;
+                }        
+                
+                //Los siguientes if's es para colocar el cero
+                //a los numeros menores a 9
+                if( horas < 10 ) hor = "0" + horas;
+                else hor = horas.toString();
+               
                 if( minutos < 10 ) min = "0" + minutos;
                 else min = minutos.toString();
+
                 if( segundos < 10 ) seg = "0" + segundos;
                 else seg = segundos.toString();
-                 
-                if( milesimas < 10 ) mil = "00" + milesimas;
-                else if( milesimas < 100 ) mil = "0" + milesimas;
-                else mil = milesimas.toString();
-                 
-                //Colocamos en la etiqueta la informacion
-                tiempo.setText( min + ":" + seg + ":" + mil );                
+
+                tiempo.setText( hor + ":" + min + ":" + seg );
             }
         }catch(Exception e){}
-        //Cuando se reincie se coloca nuevamente en 00:00:000
-        tiempo.setText( "00:00:000" );
     }
-  
-    //Esto es para el boton iniciar y reiniciar
-    public void actionPerformed( ActionEvent evt ) {
-        Object o = evt.getSource();
-            iniciarCronometro();
-    }
-  
-    //Iniciar el cronometro poniendo cronometroActivo 
-    //en verdadero para que entre en el while
-    public void iniciarCronometro() {
-        cronometroActivo = true;
-        hilo = new Thread( this );
-        hilo.start();
-    }
-  
-    //Esto es para parar el cronometro
-    public void pararCronometro(){
-        cronometroActivo = false;
-    }
-  
-    public static void main(String[] args) {
+    
+    public static void saber(){
+    String array[]=null;
+     h0="00";
+        m0="00";
+        s0="00";
+        
+        //Lo siguiente agarrar en ejecución MS-DOS
+        //parámetros definidos separados por espacios
+        if (array.length > 0) {
+            h0 = array[0];
+            m0 = array[1];
+            s0 = array[2];
+        }
         new Cronometro();
     }
-  
-    JLabel tiempo;
-    Thread hilo;
-    boolean cronometroActivo;
-}
+    //procedure principal
+    public static void main(String[] args) 
+    {
+       
+        //
+         new Cronometro();
+        //Run Cronometro_Reloj()      
+    }
+    //
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+}//Fin

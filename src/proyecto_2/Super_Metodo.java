@@ -35,6 +35,7 @@ public class Super_Metodo extends Thread {
             numero =0+ rnd.nextInt(15);
             System.out.println(getName()+":"+i);
             nadador.setBounds(posicionX, i, 73, 100); //posicionr el label con su tamaño y ancho
+            
             try{
                 sleep(numero);
                 //velocidad del hilo con el nadador que recibe la varibale random
@@ -42,8 +43,11 @@ public class Super_Metodo extends Thread {
             }catch(Exception e){
                            }
         }
+        
+            
+        
         //no se ejecute los hilos al mismo tiempo
-         System.out.println("Final de competencia"+getName());
+         System.out.println("Gano" + getName());
         yield();
     }
     }

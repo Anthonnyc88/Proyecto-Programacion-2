@@ -91,7 +91,7 @@ public class Windows_start2 extends javax.swing.JFrame {
     private void bntStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntStartActionPerformed
         // TODO add your handling code here:
         Windows_game2 a = new Windows_game2();
-        a.setVisible(true);
+        
     }//GEN-LAST:event_bntStartActionPerformed
 
     /**
