@@ -16,7 +16,8 @@ import javax.swing.JLabel;
  */
 public class Super_Metodo extends Thread {
     
-      int posicionX , limite;
+    
+    int posicionX , limite;
     JLabel nadador;
     
     public Super_Metodo(int posicionX, int limite , JLabel nadador){

@@ -67,7 +67,7 @@ public class Windows_game2 {
     int der;
     Timer timer;
 
-    //fantasmas
+   
     static int matAux[][];
 
     public Windows_game2() {
@@ -100,7 +100,8 @@ public class Windows_game2 {
         panelPresentacion.add(fondoPresentacion, 0);
 
         //menu
-        botones = new JButton[5];
+        //Esto lo que hace es hacer un recorrido sobre los botones y hacerlos cascada
+        botones = new JButton[2];
         for (int i = 0; i < botones.length; i++) {
             botones[i] = new JButton();
         }
@@ -115,12 +116,12 @@ public class Windows_game2 {
 
         });
 
-        //juego
-        mat = new int[8][8];
+        //CREA LA MATRIZ DEL TABLERO
+        mat = new int[8][5];
         mat = tablero(1);
         matAux = tablero(1);
-        matriz = new JLabel[8][8];
-        matAux = new int[8][8];
+        matriz = new JLabel[8][5];
+        matAux = new int[8][5];
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat.length; j++) {
                 matriz[i][j] = new JLabel();
@@ -158,7 +159,7 @@ public class Windows_game2 {
 
         fondoJuego = new JLabel();
         fondoJuego.setBounds(0, 0, ventana.getWidth(), ventana.getHeight());
-        imagenFondoJuego = new ImageIcon("imagenes/fondoJugar.png");
+        imagenFondoJuego = new ImageIcon("imagenes/Col2.gif");
         imagenFondoJuego = new ImageIcon(imagenFondoMenu.getImage().getScaledInstance(ventana.getWidth(), ventana.getHeight(), Image.SCALE_DEFAULT));
         fondoJuego.setIcon(imagenFondoJuego);
         fondoJuego.setVisible(true);
@@ -186,9 +187,6 @@ public class Windows_game2 {
         records.setForeground(Color.white);
         panelJuego.add(records, 0);
       mover();
-//        fantasma1 = new Fantasmas(12 ,13 ); 
-//        fantasma2 = new Fantasmas(13 ,13 );
-//        fantasma3 = new Fantasmas(13 ,12 );
         ventana.add(panelJuego);
 
     }
@@ -209,13 +207,14 @@ public class Windows_game2 {
      public void mover(){
         
         
-        timer = new Timer (200, new ActionListener () 
+        timer = new Timer (800, new ActionListener () 
+                //Esta funcion lo que hace es contar los puntos cuando la animacion 
         { 
             public void actionPerformed(ActionEvent e) 
             { 
               if( arriba == 1 && (mat[px][py-1]==1 || mat[px][py-1]==0)){
                     if(mat[px][py-1]==1){
-                        puntos = puntos + 5;
+                        puntos = puntos + 1;
                         records.setText("Puntos: "+puntos);
                     } 
                     mat[px][py] = 0;
@@ -227,7 +226,7 @@ public class Windows_game2 {
               }
               if( abajo == 1 && (mat[px][py+1]==1 || mat[px][py+1]==0)){
                     if(mat[px][py+1]==1){
-                        puntos = puntos + 5;
+                        puntos = puntos + 1;
                         records.setText("Puntos: "+puntos);
                     } 
                     mat[px][py] = 0;
@@ -239,7 +238,7 @@ public class Windows_game2 {
               }
               if( izq == 1 && (mat[px-1][py]==1 || mat[px-1][py]==0)){
                     if(mat[px-1][py]==1){
-                        puntos = puntos + 5;
+                        puntos = puntos + 1;
                         records.setText("Puntos: "+puntos);
                     } 
                     mat[px][py] = 0;
@@ -251,7 +250,7 @@ public class Windows_game2 {
               }
               if( der == 1 && (mat[px+1][py]==1 || mat[px+1][py]==0)){
                     if(mat[px+1][py]==1){
-                        puntos = puntos + 5;
+                        puntos = puntos + 1;
                         records.setText("Puntos: "+puntos);
                     } 
                     mat[px][py] = 0;
@@ -275,21 +274,17 @@ public class Windows_game2 {
                     timer.stop();
                 }
                       
-                //matar pacman
-                if(  mat[px][py+1] == 7 || mat[px][py-1] == 7 || mat[px-1][py] == 7 || mat[px+1][py] == 7 ){
-//                    fantasma1.timer.stop();
-//                    fantasma2.timer.stop();
-//                    fantasma3.timer.stop();
-                    JOptionPane.showMessageDialog(ventana, "ESTAS MUERTO");
-                    panelJuego.setVisible(false);
-                    panelMenu.setVisible(true);
-                    timer.stop();
-                    
-                }
+                
                 
         }});
         timer.start();
         ventana.addKeyListener(new KeyListener(){
+            
+            
+            
+            
+            
+            ///Esta funcion lo que hace es el movimiento de las teclas donde el usuario interactua con el juego
 
             @Override
             public void keyTyped(KeyEvent e) {
@@ -352,45 +347,20 @@ public class Windows_game2 {
 
     public int[][] tablero(int opcion) {
 
-        int[][] aux1 = new int[8][8];
+        int[][] aux1 = new int[8][5];
         if (opcion == 1) {
 
             int aux[][] = {
-                {2, 2, 2, 2, 2, 2, 2, 2},
-                {2, 1, 1, 1, 1, 1, 1, 2},
-                {2, 1, 2, 2, 1, 2, 1, 2},
-                {2, 2, 2, 2, 2, 2, 2, 2},
-                {2, 2, 2, 2, 2, 2, 2, 2},
-                {2, 2 ,2, 2, 2, 2, 2, 2},
-                {2, 2 ,2, 2, 2, 2, 2, 2},
-                {2, 2 ,2, 2, 2, 2, 2, 2},};
+                {2, 2, 2, 2, 2 , 2 , 2, 2},
+                {2, 1, 1, 1, 2 , 2 , 2, 2},
+                {2, 1, 2, 1, 2 , 2 , 2, 2},
+                {2, 2, 1, 1, 2 , 2 , 2, 2},
+                {2, 2 ,2, 2, 2 , 2 , 2, 2},};
 
             return aux;
         }
-        if (opcion == 2) {
-            int aux[][] = {
-                {2, 2, 2, 2, 2, 2, 2, 2},
-                {2, 1, 1, 1, 1, 1, 1, 2},
-                {2, 1, 2, 2, 1, 2, 1, 2},
-                {2, 2, 2, 2, 2, 2, 2 ,2},
-                {2, 2 ,2, 2, 2, 2, 2, 2},
-                {2, 2 ,2, 2, 2, 2, 2, 2},
-                {2, 2 ,2, 2, 2, 2, 2, 2},
-                {2, 2, 2, 2, 2, 2, 2, 2},};
-            return aux;
-        }
-        if (opcion == 3) {
-            int aux[][] = {
-                {2, 2, 2, 2, 2, 2, 2, 2},
-                {2, 1, 1, 1, 1, 1, 1, 2},
-                {2, 1, 2, 2, 1, 2, 1, 2},
-                {2, 2, 2, 2, 2, 2, 2, 2},
-                {2, 2 ,2, 2, 2, 2, 2, 2},
-                {2, 2 ,2, 2, 2, 2, 2, 2},
-                {2, 2 ,2, 2, 2, 2, 2, 2},
-                {2, 2, 2, 2, 2, 2, 2, 2},};
-            return aux;
-        }
+       
+        
         return aux1;
     }
 
@@ -416,10 +386,7 @@ public class Windows_game2 {
         panelMenu.add(fondoMenu,0);
         
         botones[0].setText("JUGAR");
-        botones[1].setText("crear tablero");
-        botones[2].setText("Records");
-        botones[3].setText("cargar tablero");
-        botones[4].setText("SALIR");
+        botones[1].setText("SALIR");
         
         for (int i = 0; i < botones.length; i++) {
             botones[i].setBounds(ventana.getWidth()-(200+50), (i+1)*50, 200, 40);
@@ -452,40 +419,9 @@ public class Windows_game2 {
         
         });
         
-        //boton crear tablero
-        botones[1].addMouseListener(new MouseAdapter() {
-
-            public void mousePressed(MouseEvent e){
-                 System.out.println("crear tablero");
-                 
-                }
-        
-        });
-        
-            
-            
-            //boton records
-        botones[2].addMouseListener(new MouseAdapter() {
-
-            public void mousePressed(MouseEvent e){
-                 System.out.println("records");
-                 
-            }
-        
-        });
-        
-        //cargar tablero
-        botones[3].addMouseListener(new MouseAdapter() {
-
-            public void mousePressed(MouseEvent e){
-                 System.out.println("cargar tablero");
-                 
-            }
-        
-        });
         
         //salir
-        botones[4].addMouseListener(new MouseAdapter() {
+        botones[1].addMouseListener(new MouseAdapter() {
 
             public void mousePressed(MouseEvent e){
                  System.out.println("SALIR");
