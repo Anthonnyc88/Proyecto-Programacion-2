@@ -42,13 +42,10 @@ public class Windows_game1 extends JFrame {
 
         //Permiter poner nuestros componentes donde queranos
         getContentPane().setLayout(null);
-
-//        SpinnerNumberModel model = new SpinnerNumberModel(
-//                new Integer(2), // Dato visualizado al inicio en el spinner 
-//                new Integer(0), // Límite inferior 
-//                new Integer(5), // Límite superior 
-//                new Integer(1) // incremento-decremento 
-//        );
+int cP;
+        SpinnerNumberModel model = new SpinnerNumberModel(
+                
+        );
         ArrayList<String> ListaNadadores = new ArrayList<>();
         ListaNadadores.add("Anthonny");
         ListaNadadores.add("Maria");
@@ -66,35 +63,43 @@ public class Windows_game1 extends JFrame {
         piscina.add(nadado1);
         nadado1.setActionCommand("NADADOR1");
         nadado1.setSelected(true);
-        nadado1.setBounds(1, 1, 100, 25);
+        nadado1.setBounds(0,5 , 100, 25);
 
         JRadioButton nadado2 = new JRadioButton("NADADOR2");
         nadado2.setMnemonic('b');
         piscina.add(nadado2);
         nadado2.setActionCommand("NADADOR2");
         nadado2.setSelected(true);
-        nadado2.setBounds(1, 1, 100, 25);
+        nadado2.setBounds(0, 25, 100, 25);
 
         JRadioButton nadado3 = new JRadioButton("NADADOR3");
         nadado3.setMnemonic('b');
         piscina.add(nadado3);
         nadado3.setActionCommand("NADADOR3");
         nadado3.setSelected(true);
-        nadado3.setBounds(1, 1, 100, 25);
+        nadado3.setBounds(0, 45, 100, 25);
 
         JRadioButton nadado4 = new JRadioButton("NADADOR4");
         nadado4.setMnemonic('b');
         piscina.add(nadado4);
         nadado4.setActionCommand("NADADOR4");
         nadado4.setSelected(true);
-        nadado4.setBounds(1, 1, 100, 25);
+        nadado4.setBounds(0, 65, 100, 25);
 
         JRadioButton nadado5 = new JRadioButton("NADADOR5");
         nadado5.setMnemonic('b');
         piscina.add(nadado5);
         nadado5.setActionCommand("NADADOR5");
         nadado5.setSelected(true);
-        nadado5.setBounds(1, 1, 100, 25);
+        nadado5.setBounds(0, 85, 100, 25);
+        
+        if(nadado1.isSelected()==true){
+           Super_Metodo hiloNadador1 = new Super_Metodo(30, alto, nadador1);
+           hiloNadador1.start();
+            
+            
+        }
+        
 
         ButtonGroup group = new ButtonGroup();
         group.add(nadado1);
@@ -145,13 +150,14 @@ public class Windows_game1 extends JFrame {
                     System.out.println("Inicio");
                     //Aqui llamo los metodos de los hilos de cada nadador
                     //new Cronometro();
-                    Super_Metodo hiloNadador1 = new Super_Metodo(30, alto, nadador1);
+                    JRadioButton nadado1 = new JRadioButton("NADADOR1");
+                   
                     Super_Metodo hiloNadador2 = new Super_Metodo(150, alto, nadador2);
                     Super_Metodo hiloNadador3 = new Super_Metodo(280, alto, nadador3);
                     Super_Metodo hiloNadador4 = new Super_Metodo(400, alto, nadador4);
                     Super_Metodo hiloNadador5 = new Super_Metodo(500, alto, nadador5);
 
-                    hiloNadador1.start(); //Arranca la ejecucion de cada hilo
+                     //Arranca la ejecucion de cada hilo
                     hiloNadador2.start();
                     hiloNadador3.start();
                     hiloNadador4.start();
