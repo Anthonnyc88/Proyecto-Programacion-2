@@ -45,8 +45,6 @@ public class Windows_start1 extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox();
         bntGame = new javax.swing.JButton();
         bntAtras = new javax.swing.JButton();
-        jSpinnerNadadores = new javax.swing.JSpinner();
-        jLabel1 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -66,11 +64,6 @@ public class Windows_start1 extends javax.swing.JFrame {
             }
         });
 
-        jSpinnerNadadores.setModel(new javax.swing.SpinnerNumberModel(2, 2, 5, 1));
-
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Cantidad nadadores");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,22 +75,13 @@ public class Windows_start1 extends javax.swing.JFrame {
                         .addComponent(bntAtras))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(176, 176, 176)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bntGame)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(jSpinnerNadadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(175, Short.MAX_VALUE))
+                        .addComponent(bntGame)))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSpinnerNadadores, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84)
+                .addContainerGap(197, Short.MAX_VALUE)
                 .addComponent(bntGame)
                 .addGap(4, 4, 4)
                 .addComponent(bntAtras)
@@ -159,7 +143,5 @@ public class Windows_start1 extends javax.swing.JFrame {
     private javax.swing.JButton bntAtras;
     private javax.swing.JButton bntGame;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JSpinner jSpinnerNadadores;
     // End of variables declaration//GEN-END:variables
 }

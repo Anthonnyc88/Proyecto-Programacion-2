@@ -59,7 +59,7 @@ public class Windows_game2 {
     int py;
     String jugador;
     JLabel nombre;
-    int puntos;
+//    int puntos;
     JLabel records;
     int abajo;
     int arriba;
@@ -93,7 +93,7 @@ public class Windows_game2 {
 
         fondoPresentacion = new JLabel();
         fondoPresentacion.setBounds(0, 0, ventana.getWidth(), ventana.getHeight());
-        imagenFondoPres = new ImageIcon("imagenes/fondoPresentacion.png");
+        imagenFondoPres = new ImageIcon("imagenes/fondo1.jpg");
         imagenFondoPres = new ImageIcon(imagenFondoPres.getImage().getScaledInstance(ventana.getWidth(), ventana.getHeight(), Image.SCALE_DEFAULT));
         fondoPresentacion.setIcon(imagenFondoPres);
         fondoPresentacion.setVisible(true);
@@ -159,7 +159,7 @@ public class Windows_game2 {
 
         fondoJuego = new JLabel();
         fondoJuego.setBounds(0, 0, ventana.getWidth(), ventana.getHeight());
-        imagenFondoJuego = new ImageIcon("imagenes/Col2.gif");
+        imagenFondoJuego = new ImageIcon("imagenes/fondo2.jpg");
         imagenFondoJuego = new ImageIcon(imagenFondoMenu.getImage().getScaledInstance(ventana.getWidth(), ventana.getHeight(), Image.SCALE_DEFAULT));
         fondoJuego.setIcon(imagenFondoJuego);
         fondoJuego.setVisible(true);
@@ -180,12 +180,12 @@ public class Windows_game2 {
         nombre.setVisible(true);
         panelJuego.add(nombre, 0);
 
-        puntos = 0;
-        records = new JLabel("Puntos: " + puntos);
-        records.setBounds(ventana.getWidth() - (150 + 20), 20, 150, 30);
-        records.setVisible(true);
-        records.setForeground(Color.white);
-        panelJuego.add(records, 0);
+//        puntos = 0;
+//        records = new JLabel("Puntos: " + puntos);
+//        records.setBounds(ventana.getWidth() - (150 + 20), 20, 150, 30);
+//        records.setVisible(true);
+//        records.setForeground(Color.white);
+//        panelJuego.add(records, 0);
       mover();
         ventana.add(panelJuego);
 
@@ -207,15 +207,15 @@ public class Windows_game2 {
      public void mover(){
         
         
-        timer = new Timer (800, new ActionListener () 
+        timer = new Timer (1000, new ActionListener () 
                 //Esta funcion lo que hace es contar los puntos cuando la animacion 
         { 
             public void actionPerformed(ActionEvent e) 
             { 
               if( arriba == 1 && (mat[px][py-1]==1 || mat[px][py-1]==0)){
                     if(mat[px][py-1]==1){
-                        puntos = puntos + 1;
-                        records.setText("Puntos: "+puntos);
+//                        puntos = puntos + 1;
+//                        records.setText("Puntos: "+puntos);
                     } 
                     mat[px][py] = 0;
                     matAux[px][py] = mat[px][py]; //esto es nuevo
@@ -226,8 +226,8 @@ public class Windows_game2 {
               }
               if( abajo == 1 && (mat[px][py+1]==1 || mat[px][py+1]==0)){
                     if(mat[px][py+1]==1){
-                        puntos = puntos + 1;
-                        records.setText("Puntos: "+puntos);
+//                        puntos = puntos + 1;
+//                        records.setText("Puntos: "+puntos);
                     } 
                     mat[px][py] = 0;
                     matAux[px][py] = mat[px][py]; //esto es nuevo
@@ -238,8 +238,8 @@ public class Windows_game2 {
               }
               if( izq == 1 && (mat[px-1][py]==1 || mat[px-1][py]==0)){
                     if(mat[px-1][py]==1){
-                        puntos = puntos + 1;
-                        records.setText("Puntos: "+puntos);
+//                        puntos = puntos + 1;
+//                        records.setText("Puntos: "+puntos);
                     } 
                     mat[px][py] = 0;
                     matAux[px][py] = mat[px][py]; //esto es nuevo
@@ -250,8 +250,8 @@ public class Windows_game2 {
               }
               if( der == 1 && (mat[px+1][py]==1 || mat[px+1][py]==0)){
                     if(mat[px+1][py]==1){
-                        puntos = puntos + 1;
-                        records.setText("Puntos: "+puntos);
+//                        puntos = puntos + 1;
+//                        records.setText("Puntos: "+puntos);
                     } 
                     mat[px][py] = 0;
                     matAux[px][py] = mat[px][py]; //esto es nuevo
@@ -267,12 +267,12 @@ public class Windows_game2 {
                              enc =1;
                     }
                 }
-                if(enc == 0){
-                    JOptionPane.showMessageDialog(ventana, "FELICITACIONES GANO");
-                    panelJuego.setVisible(false);
-                    panelMenu.setVisible(true);
-                    timer.stop();
-                }
+//                if(enc == 0){
+//                    JOptionPane.showMessageDialog(ventana, "FELICITACIONES GANO");
+//                    panelJuego.setVisible(false);
+//                    panelMenu.setVisible(true);
+//                    timer.stop();
+                
                       
                 
                 
@@ -379,7 +379,8 @@ public class Windows_game2 {
         
         fondoMenu = new JLabel();
         fondoMenu.setBounds(0, 0, ventana.getWidth(), ventana.getHeight());
-        imagenFondoMenu = new ImageIcon("imagenes/fondoMenu.png");
+        //colocamos la imagen dek juego y el menu
+        imagenFondoMenu = new ImageIcon("imagenes/fondo2.jpg");
         imagenFondoMenu = new ImageIcon(imagenFondoMenu.getImage().getScaledInstance(ventana.getWidth(), ventana.getHeight(), Image.SCALE_DEFAULT));
         fondoMenu.setIcon(imagenFondoMenu);
         fondoMenu.setVisible(true);

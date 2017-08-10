@@ -18,12 +18,12 @@ public class Super_Metodo extends Thread {
     
     
     int posicionX , limite;
-    JLabel nadador;
+    JLabel nadador1;
     
-    public Super_Metodo(int posicionX, int limite , JLabel nadador){
+    public Super_Metodo(int posicionX, int limite , JLabel nadador1){
         this.posicionX = posicionX;
         this.limite = limite;
-        this.nadador = nadador;
+        this.nadador1 = nadador1;
     }
     //sobre escribiendo el metodo
     @Override
@@ -35,7 +35,7 @@ public class Super_Metodo extends Thread {
         for(int i=limite-150; i>0; i--){
             numero =0+ rnd.nextInt(15);
             System.out.println(getName()+":"+i);
-            nadador.setBounds(posicionX, i, 73, 100); //posicionr el label con su tamaño y ancho
+            nadador1.setBounds(posicionX, i, 73, 100); //posicionr el label con su tamaño y ancho
             
             try{
                 sleep(numero);
