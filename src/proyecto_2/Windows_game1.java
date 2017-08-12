@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.Icon;
@@ -33,6 +34,7 @@ import static proyecto_2.Cronometro.saber;
 public class Windows_game1 extends JFrame {
 
     JLabel nadador1, nadador2, nadador3, nadador4, nadador5, piscina, linea1, linea2;
+    JRadioButton botones[];
 
     JButton bntInicio, bntRegresar;
     int x = 50, y = 0, Ancho = 1000, alto = 700;
@@ -57,7 +59,9 @@ int cP;
         getContentPane().add(piscina);
         this.getContentPane().setBackground(Color.BLUE);
         piscina.setBounds(100, 0, 1000, 700);
-
+        
+        
+        //RADIOS BUTTONS
         JRadioButton nadado1 = new JRadioButton("NADADOR1");
         nadado1.setMnemonic('b');
         piscina.add(nadado1);
@@ -94,8 +98,7 @@ int cP;
         nadado5.setBounds(0, 85, 100, 25);
         
         if(nadado1.isSelected()==true){
-           Super_Metodo hiloNadador1 = new Super_Metodo(30, alto, nadador1);
-           hiloNadador1.start();
+          
             
             
         }
@@ -135,6 +138,9 @@ int cP;
         nadador5.setBounds(500, alto - 150, 73, 100);
 
         {
+            
+            
+       
 
             //boton de inicio del juego
             ImageIcon start = new ImageIcon(getClass().getResource("/Imagenes/5.png"));//Colocamos la imagen en el boton
@@ -151,13 +157,15 @@ int cP;
                     //Aqui llamo los metodos de los hilos de cada nadador
                     //new Cronometro();
                     JRadioButton nadado1 = new JRadioButton("NADADOR1");
-                   
+                    
+                    Super_Metodo hiloNadador1 = new Super_Metodo(30, alto, nadador1);
                     Super_Metodo hiloNadador2 = new Super_Metodo(150, alto, nadador2);
                     Super_Metodo hiloNadador3 = new Super_Metodo(280, alto, nadador3);
                     Super_Metodo hiloNadador4 = new Super_Metodo(400, alto, nadador4);
                     Super_Metodo hiloNadador5 = new Super_Metodo(500, alto, nadador5);
 
                      //Arranca la ejecucion de cada hilo
+                    hiloNadador1.start();
                     hiloNadador2.start();
                     hiloNadador3.start();
                     hiloNadador4.start();
@@ -165,15 +173,16 @@ int cP;
 
                 }
             });
+            
+            
 
             setDefaultCloseOperation(EXIT_ON_CLOSE);
             setBounds(x, y, Ancho, alto);
             setVisible(true);
             setResizable(false);//no poder cambiar dimensiones
-
-        }
-
-    }
-
-    //
+             }
+             }      
 }
+    //
+
+
