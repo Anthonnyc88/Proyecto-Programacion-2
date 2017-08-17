@@ -9,8 +9,6 @@ package proyecto_2;
  *
  * @author Anthonny
  */
-
-    
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -144,3 +142,4 @@ public class Cronometro extends JFrame implements Runnable, ActionListener
     }
     
 }//Fin
+

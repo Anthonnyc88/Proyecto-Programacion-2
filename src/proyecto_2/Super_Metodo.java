@@ -49,7 +49,7 @@ public class Super_Metodo extends Thread {
         
         //no se ejecute los hilos al mismo tiempo
          System.out.println("Gano" + getName());
-        yield();
+        //yield();
     }
     }
 

@@ -22,10 +22,6 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
-import static proyecto_2.Cronometro.h0;
-import static proyecto_2.Cronometro.m0;
-import static proyecto_2.Cronometro.s0;
-import static proyecto_2.Cronometro.saber;
 
 /**
  *
@@ -165,6 +161,7 @@ int cP;
                     Super_Metodo hiloNadador5 = new Super_Metodo(500, alto, nadador5);
 
                      //Arranca la ejecucion de cada hilo
+                    Cronometro t = new Cronometro();
                     hiloNadador1.start();
                     hiloNadador2.start();
                     hiloNadador3.start();
