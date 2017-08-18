@@ -21,5 +21,6 @@ public class Proyecto_2 {
         a.setVisible(true);
         
         ///
+
     }
 }
