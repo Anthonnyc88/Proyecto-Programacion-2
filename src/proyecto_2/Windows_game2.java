@@ -25,8 +25,8 @@ public class Windows_game2 extends JFrame implements ActionListener {
 
 	public Windows_game2() {
 		JToolBar barraHerramientas = new JToolBar();
-		txtColumnas = new JTextField();
-		txtFilas = new JTextField();
+//		txtColumnas = new JTextField();
+//		txtFilas = new JTextField();
 		btnCrear = new JButton();
 		panel = new JPanel( null );
 		//Para que el JFrame cierre la aplicacion

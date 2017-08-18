@@ -20,7 +20,7 @@ public class LabelMatriz extends JLabel implements ActionListener {
     
     //-------- Constructor con parametros para posicionar a los LABELS ------//
     public LabelMatriz( int pos_x, int pos_y, int ancho, int alto ){ 
-        //Se coloca el boton en un lugar y se le da un tamanio
+        //Se coloca el label en un lugar y se le da un tamanio
         setBounds(pos_x, pos_y, ancho, alto);
         
         //Se agrega el action listener en este caso la misma clase
@@ -30,7 +30,7 @@ public class LabelMatriz extends JLabel implements ActionListener {
     
     //---------------------- Se asigna una el nombre al label ---------------//
     public void setNombre( int f, int c ){
-        setText( f + " , " + c );
+        setText( f + " , " + c);
     }
     //------------------------------------------------------------------------//
     
