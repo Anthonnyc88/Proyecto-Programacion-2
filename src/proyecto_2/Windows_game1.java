@@ -35,14 +35,46 @@ import static proyecto_2.Cronometro.saber;
  *
  * @author Anthonny
  */
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.util.ArrayList;
+import javax.swing.ButtonGroup;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import static proyecto_2.Cronometro.h0;
+import static proyecto_2.Cronometro.m0;
+import static proyecto_2.Cronometro.s0;
+import static proyecto_2.Cronometro.saber;
+
+/**
+ *
+ * @author Anthonny
+ */
 public class Windows_game1 extends JFrame {
 
     JLabel nadador1, nadador2, nadador3, nadador4, nadador5, piscina, linea1, linea2 , separador1 , separador2,separador3,separador4;
     JRadioButton botones[];
     JTextArea txtNadadores;
     JRadioButton nadado1, nadado2, nadado3, nadado4, nadado5;
+    int contador = 0;
 
-    JButton bntInicio, bntRegresar;
+    JButton bntInicio, btnReport1, btnReport2, btnReport3, btnReport4, btnReport5;
     int x = 50, y = 0, Ancho = 1000, alto = 700;
 
     public Windows_game1() {
@@ -168,14 +200,14 @@ public class Windows_game1 extends JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-
+                    
                     txtNadadores.setText(txtNadadores.getText() + "-------------------------------------\n");
-
+                    contador += 1;
+                    
                     if (nadado1.isSelected()) {
                         nadador1.setVisible(true);
                         Super_Metodo hiloNadador1 = new Super_Metodo(30, alto, nadador1, txtNadadores);
                         hiloNadador1.start();
-
                     } else {
                         if (nadado2.isSelected()) {
                             nadador1.setVisible(true);
@@ -185,7 +217,6 @@ public class Windows_game1 extends JFrame {
                             nadador2.setVisible(true);
                             Super_Metodo hiloNadador2 = new Super_Metodo(150, alto, nadador2, txtNadadores);
                             hiloNadador2.start();
-
                         } else {
                             if (nadado3.isSelected()) {
                                 nadador1.setVisible(true);
@@ -245,7 +276,106 @@ public class Windows_game1 extends JFrame {
                     }
                 }
             });
+            
+            btnReport1 = new JButton("Reporte 1");
+            getContentPane().add(btnReport1);
+            btnReport1.setBounds(800, 200, 100, 25);
+            btnReport1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Integer[] listaGanadores = {0,0,0,0,0,0};
+                    String nadadores = txtNadadores.getText().replaceAll("Llegó el Nadador ", "").replaceAll("\n", "");
+                    String[] listaNadadores = nadadores.replaceAll("\n", "").split("-------------------------------------");
+                    
+                    for(int i = 1; i<listaNadadores.length;i++){
+                        int num = Integer.parseInt(listaNadadores[i].substring(0,1));
+                        listaGanadores[num] += 1;
+                    }                 
+                    
+                    String texto = "El nadador 1 ha ganado: " + listaGanadores[1] + "\n" +
+                                   "El nadador 2 ha ganado: " + listaGanadores[2] + "\n" +
+                                   "El nadador 3 ha ganado: " + listaGanadores[3] + "\n" +
+                                   "El nadador 4 ha ganado: " + listaGanadores[4] + "\n" +
+                                   "El nadador 5 ha ganado: " + listaGanadores[5] + "\n";
+                    
+                    JOptionPane.showMessageDialog(null, texto);
+                    
+                }
+            });
+            
+            btnReport2 = new JButton("Reporte 2");
+            getContentPane().add(btnReport2);
+            btnReport2.setBounds(800, 230, 100, 25);
+            btnReport2.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Cantidad de carreras efectuadas: " + contador);
+                }
+            });
+            
+            btnReport3 = new JButton("Reporte 3");
+            getContentPane().add(btnReport3);
+            btnReport3.setBounds(800, 260, 100, 25);
+            btnReport3.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Integer[] listaGanadores = {0, 0, 0, 0, 0, 0};
+                    String nadadores = txtNadadores.getText().replaceAll("Llegó el Nadador ", "").replaceAll("\n", "");
+                    String[] listaNadadores = nadadores.replaceAll("\n", "").split("-------------------------------------");
 
+                    for (int i = 1; i < listaNadadores.length; i++) {
+                        int num = Integer.parseInt(listaNadadores[i].substring(0, 1));
+                        listaGanadores[num] += 1;
+                    }
+                    
+                    int max,i;
+                    
+                    max = listaGanadores[1];
+
+                    for (i = 1; i < listaGanadores.length; i++) {
+                        if (max < listaGanadores[i]) {
+                            max = i;
+                        }
+                    }
+                    
+                    JOptionPane.showMessageDialog(null, "El nadador con más competencias ganadas es: " + max);
+
+                }
+            });
+            
+            btnReport4 = new JButton("Reporte 4");
+            getContentPane().add(btnReport4);
+            btnReport4.setBounds(800, 290, 100, 25);
+            btnReport4.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Integer[] listaGanadores = {0, 0, 0, 0, 0, 0};
+                    String nadadores = txtNadadores.getText().replaceAll("Llegó el Nadador ", "").replaceAll("\n", "");
+                    String[] listaNadadores = nadadores.replaceAll("\n", "").split("-------------------------------------");
+
+                    for (int i = 1; i < listaNadadores.length; i++) {
+                        int num = Integer.parseInt(listaNadadores[i].substring(0, 1));
+                        listaGanadores[num] += 1;
+                    }
+
+                    int min, i;
+
+                    min = listaGanadores[1];
+
+                    for (i = 1; i < listaGanadores.length; i++) {
+                        if (min > listaGanadores[i]) {
+                            min = i;
+                        }
+                    }
+
+                    JOptionPane.showMessageDialog(null, "El nadador con menos competencias ganadas es: " + min);
+                }
+            });
+
+            btnReport5 = new JButton("Reporte 5");
+            getContentPane().add(btnReport5);
+            btnReport5.setBounds(800, 320, 100, 25);
+            
             setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             setBounds(x, y, Ancho, alto);
             setVisible(true);

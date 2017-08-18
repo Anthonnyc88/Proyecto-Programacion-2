@@ -50,7 +50,7 @@ public class Super_Metodo extends Thread {
         }
         //no se ejecute los hilos al mismo tiempo
 
-        txtNadadores.setText(txtNadadores.getText() + "Llegó el" + nadador1.getText() + "\n");
+        txtNadadores.setText(txtNadadores.getText() + "Llegó el " + nadador1.getText() + "\n");
 
         yield();
         nadador1.setVisible(false);

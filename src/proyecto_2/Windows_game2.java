@@ -50,6 +50,7 @@ public class Windows_game2 extends JFrame implements ActionListener {
 	public void actionPerformed( ActionEvent evt ) {
         int filas = 8;
         int columnas = 5;
+        String rojo="\033[31m";
 
         //Se crea una matriz de labels segun las filas y columnas entrantes
         LabelMatriz [][] botones = new LabelMatriz[ filas ][ columnas ];
@@ -61,17 +62,15 @@ public class Windows_game2 extends JFrame implements ActionListener {
             {
                 //Se crea el boton y se agrega a las celda de la matriz
                 botones[fila][columna] = new LabelMatriz( 75 * columna, 30 * fila, 75, 30 );
-                
                 //Se da el nombre en forma de coordenada enviando la fila y columna
                 botones[fila][columna].setNombre(fila, columna);
-                
                 //Se agrega el boton al panel
                 panel.add( botones[fila][columna] );
+                
             }
         }
-        
         //Se actualiza el panel para que se vean los botones
-		panel.updateUI();
+        panel.updateUI();
 	}                                        
 
 	public static void main(String args[]) {
