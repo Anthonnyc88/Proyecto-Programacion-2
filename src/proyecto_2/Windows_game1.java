@@ -19,9 +19,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import static proyecto_2.Cronometro.h0;
 import static proyecto_2.Cronometro.m0;
 import static proyecto_2.Cronometro.s0;
@@ -35,6 +39,8 @@ public class Windows_game1 extends JFrame {
 
     JLabel nadador1, nadador2, nadador3, nadador4, nadador5, piscina, linea1, linea2;
     JRadioButton botones[];
+    JTextArea txtNadadores;
+    JRadioButton nadado1, nadado2, nadado3, nadado4, nadado5;
 
     JButton bntInicio, bntRegresar;
     int x = 50, y = 0, Ancho = 1000, alto = 700;
@@ -44,10 +50,8 @@ public class Windows_game1 extends JFrame {
 
         //Permiter poner nuestros componentes donde queranos
         getContentPane().setLayout(null);
-int cP;
-        SpinnerNumberModel model = new SpinnerNumberModel(
-                
-        );
+        int cP;
+        SpinnerNumberModel model = new SpinnerNumberModel();
         ArrayList<String> ListaNadadores = new ArrayList<>();
         ListaNadadores.add("Anthonny");
         ListaNadadores.add("Maria");
@@ -59,50 +63,32 @@ int cP;
         getContentPane().add(piscina);
         this.getContentPane().setBackground(Color.BLUE);
         piscina.setBounds(100, 0, 1000, 700);
-        
-        
-        //RADIOS BUTTONS
-        JRadioButton nadado1 = new JRadioButton("NADADOR1");
-        nadado1.setMnemonic('b');
-        piscina.add(nadado1);
-        nadado1.setActionCommand("NADADOR1");
-        nadado1.setSelected(true);
-        nadado1.setBounds(0,5 , 100, 25);
 
-        JRadioButton nadado2 = new JRadioButton("NADADOR2");
-        nadado2.setMnemonic('b');
+        //RADIOS BUTTONS
+        nadado1 = new JRadioButton("NADADOR1");
+        piscina.add(nadado1);
+        nadado1.setSelected(true);
+        nadado1.setBounds(0, 5, 100, 25);
+
+        nadado2 = new JRadioButton("NADADOR2");
         piscina.add(nadado2);
-        nadado2.setActionCommand("NADADOR2");
         nadado2.setSelected(true);
         nadado2.setBounds(0, 25, 100, 25);
 
-        JRadioButton nadado3 = new JRadioButton("NADADOR3");
-        nadado3.setMnemonic('b');
+        nadado3 = new JRadioButton("NADADOR3");
         piscina.add(nadado3);
-        nadado3.setActionCommand("NADADOR3");
         nadado3.setSelected(true);
         nadado3.setBounds(0, 45, 100, 25);
 
-        JRadioButton nadado4 = new JRadioButton("NADADOR4");
-        nadado4.setMnemonic('b');
+        nadado4 = new JRadioButton("NADADOR4");
         piscina.add(nadado4);
-        nadado4.setActionCommand("NADADOR4");
         nadado4.setSelected(true);
         nadado4.setBounds(0, 65, 100, 25);
 
-        JRadioButton nadado5 = new JRadioButton("NADADOR5");
-        nadado5.setMnemonic('b');
+        nadado5 = new JRadioButton("NADADOR5");
         piscina.add(nadado5);
-        nadado5.setActionCommand("NADADOR5");
         nadado5.setSelected(true);
         nadado5.setBounds(0, 85, 100, 25);
-        
-        if(nadado1.isSelected()==true){
-          
-            
-            
-        }
-        
 
         ButtonGroup group = new ButtonGroup();
         group.add(nadado1);
@@ -113,35 +99,49 @@ int cP;
 
         //Hacemos los JLabel de cada nadador
         nadador1 = new JLabel();
+        nadador1.setText("Nadador 1");
         piscina.add(nadador1); //Agrega la imagen al panel
         nadador1.setIcon(new ImageIcon(getClass().getResource("/Imagenes/nadador.gif")));
         nadador1.setBounds(30, alto - 150, 73, 100);
+        nadador1.setVisible(false);
 
         nadador2 = new JLabel();
+        nadador2.setText("Nadador 2");
         piscina.add(nadador2);
         nadador2.setIcon(new ImageIcon(getClass().getResource("/Imagenes/nadador.gif")));
         nadador2.setBounds(150, alto - 150, 73, 100);
+        nadador2.setVisible(false);
 
         nadador3 = new JLabel();
+        nadador3.setText("Nadador 3");
         piscina.add(nadador3);
         nadador3.setIcon(new ImageIcon(getClass().getResource("/Imagenes/nadador.gif")));
         nadador3.setBounds(280, alto - 150, 73, 100);
+        nadador3.setVisible(false);
 
         nadador4 = new JLabel();
+        nadador4.setText("Nadador 4");
         piscina.add(nadador4);
         nadador4.setIcon(new ImageIcon(getClass().getResource("/Imagenes/nadador.gif")));
         nadador4.setBounds(400, alto - 150, 73, 100);
+        nadador4.setVisible(false);
 
         nadador5 = new JLabel();
+        nadador5.setText("Nadador 5");
         piscina.add(nadador5);
         nadador5.setIcon(new ImageIcon(getClass().getResource("/Imagenes/nadador.gif")));
         nadador5.setBounds(500, alto - 150, 73, 100);
+        nadador5.setVisible(false);
+
+        txtNadadores = new JTextArea();
+        //txtNadadores.setBounds(678, 450,200,200);
+        JScrollPane scroll = new JScrollPane(txtNadadores);
+        scroll.setBounds(650, 450, 200, 200);
+        txtNadadores.setEditable(false);
+
+        piscina.add(scroll);
 
         {
-            
-            
-       
-
             //boton de inicio del juego
             ImageIcon start = new ImageIcon(getClass().getResource("/Imagenes/5.png"));//Colocamos la imagen en el boton
             Icon icono = new ImageIcon(start.getImage().getScaledInstance(100, 50, 1));
@@ -153,36 +153,90 @@ int cP;
 
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    System.out.println("Inicio");
-                    //Aqui llamo los metodos de los hilos de cada nadador
-                    //new Cronometro();
-                    JRadioButton nadado1 = new JRadioButton("NADADOR1");
-                    
-                    Super_Metodo hiloNadador1 = new Super_Metodo(30, alto, nadador1);
-                    Super_Metodo hiloNadador2 = new Super_Metodo(150, alto, nadador2);
-                    Super_Metodo hiloNadador3 = new Super_Metodo(280, alto, nadador3);
-                    Super_Metodo hiloNadador4 = new Super_Metodo(400, alto, nadador4);
-                    Super_Metodo hiloNadador5 = new Super_Metodo(500, alto, nadador5);
 
-                     //Arranca la ejecucion de cada hilo
-                    hiloNadador1.start();
-                    hiloNadador2.start();
-                    hiloNadador3.start();
-                    hiloNadador4.start();
-                    hiloNadador5.start();
+                    txtNadadores.setText(txtNadadores.getText() + "-------------------------------------\n");
 
+                    if (nadado1.isSelected()) {
+                        nadador1.setVisible(true);
+                        Super_Metodo hiloNadador1 = new Super_Metodo(30, alto, nadador1, txtNadadores);
+                        hiloNadador1.start();
+
+                    } else {
+                        if (nadado2.isSelected()) {
+                            nadador1.setVisible(true);
+                            Super_Metodo hiloNadador1 = new Super_Metodo(30, alto, nadador1, txtNadadores);
+                            hiloNadador1.start();
+
+                            nadador2.setVisible(true);
+                            Super_Metodo hiloNadador2 = new Super_Metodo(150, alto, nadador2, txtNadadores);
+                            hiloNadador2.start();
+
+                        } else {
+                            if (nadado3.isSelected()) {
+                                nadador1.setVisible(true);
+                                Super_Metodo hiloNadador1 = new Super_Metodo(30, alto, nadador1, txtNadadores);
+                                hiloNadador1.start();
+
+                                nadador2.setVisible(true);
+                                Super_Metodo hiloNadador2 = new Super_Metodo(150, alto, nadador2, txtNadadores);
+                                hiloNadador2.start();
+
+                                nadador3.setVisible(true);
+                                Super_Metodo hiloNadador3 = new Super_Metodo(280, alto, nadador3, txtNadadores);
+                                hiloNadador3.start();
+                            } else {
+                                if (nadado4.isSelected()) {
+                                    nadador1.setVisible(true);
+                                    Super_Metodo hiloNadador1 = new Super_Metodo(30, alto, nadador1, txtNadadores);
+                                    hiloNadador1.start();
+
+                                    nadador2.setVisible(true);
+                                    Super_Metodo hiloNadador2 = new Super_Metodo(150, alto, nadador2, txtNadadores);
+                                    hiloNadador2.start();
+
+                                    nadador3.setVisible(true);
+                                    Super_Metodo hiloNadador3 = new Super_Metodo(280, alto, nadador3, txtNadadores);
+                                    hiloNadador3.start();
+
+                                    nadador4.setVisible(true);
+                                    Super_Metodo hiloNadador4 = new Super_Metodo(400, alto, nadador4, txtNadadores);
+                                    hiloNadador4.start();
+                                } else {
+                                    if (nadado5.isSelected()) {
+                                        //Aqui llamo los metodos de los hilos de cada nadador
+                                        nadador1.setVisible(true);
+                                        Super_Metodo hiloNadador1 = new Super_Metodo(30, alto, nadador1, txtNadadores);
+                                        hiloNadador1.start();//Arranca la ejecucion de cada hilo
+
+                                        nadador2.setVisible(true);
+                                        Super_Metodo hiloNadador2 = new Super_Metodo(150, alto, nadador2, txtNadadores);
+                                        hiloNadador2.start();
+
+                                        nadador3.setVisible(true);
+                                        Super_Metodo hiloNadador3 = new Super_Metodo(280, alto, nadador3, txtNadadores);
+                                        hiloNadador3.start();
+
+                                        nadador4.setVisible(true);
+                                        Super_Metodo hiloNadador4 = new Super_Metodo(400, alto, nadador4, txtNadadores);
+                                        hiloNadador4.start();
+
+                                        nadador5.setVisible(true);
+                                        Super_Metodo hiloNadador5 = new Super_Metodo(500, alto, nadador5, txtNadadores);
+                                        hiloNadador5.start();
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             });
-            
-            
 
-            setDefaultCloseOperation(EXIT_ON_CLOSE);
+            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             setBounds(x, y, Ancho, alto);
             setVisible(true);
             setResizable(false);//no poder cambiar dimensiones
-             }
-             }      
+        }
+    }
 }
-    //
 
 
