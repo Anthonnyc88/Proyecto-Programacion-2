@@ -68,7 +68,7 @@ import static proyecto_2.Cronometro.saber;
  */
 public class Windows_game1 extends JFrame {
 
-    JLabel nadador1, nadador2, nadador3, nadador4, nadador5, piscina, linea1, linea2 , separador1 , separador2,separador3,separador4;
+    JLabel nadador1, nadador2, nadador3, nadador4, nadador5, piscina, linea1, linea2 ,separador, separador1 , separador2,separador3,separador4 , separador5;
     JRadioButton botones[];
     JTextArea txtNadadores;
     JRadioButton nadado1, nadado2, nadado3, nadado4, nadado5;
@@ -78,9 +78,9 @@ public class Windows_game1 extends JFrame {
     int x = 50, y = 0, Ancho = 1000, alto = 700;
 
     public Windows_game1() {
-        super("Competencia de natacion");
+        super("Swimming competition");
 
-        //Permiter poner nuestros componentes donde queranos
+        //Allow to put our components wherever you want
         getContentPane().setLayout(null);
         int cP;
         SpinnerNumberModel model = new SpinnerNumberModel();
@@ -95,6 +95,41 @@ public class Windows_game1 extends JFrame {
         getContentPane().add(piscina);
         this.getContentPane().setBackground(Color.BLUE);
         piscina.setBounds(100, 0, 1000, 700);
+        
+        
+        ///Here we put the line that divides swimmers///
+        
+        separador=new JLabel();
+        piscina.add(separador);
+        separador.setIcon(new ImageIcon(getClass().getResource("/Imagenes/linea.png")));
+        separador.setBounds(10,7,10,645);
+        
+        separador1=new JLabel();
+        piscina.add(separador1);
+        separador1.setIcon(new ImageIcon(getClass().getResource("/Imagenes/linea.png")));
+        separador1.setBounds(130,7,10,645);
+        
+        separador2=new JLabel();
+        piscina.add(separador2);
+        separador2.setIcon(new ImageIcon(getClass().getResource("/Imagenes/linea.png")));
+        separador2.setBounds(250,7,10,645);
+        
+        separador3=new JLabel();
+        piscina.add(separador3);
+        separador3.setIcon(new ImageIcon(getClass().getResource("/Imagenes/linea.png")));
+        separador3.setBounds(373,7,10,645);
+        
+        separador4=new JLabel();
+        piscina.add(separador4);
+        separador4.setIcon(new ImageIcon(getClass().getResource("/Imagenes/linea.png")));
+        separador4.setBounds(475,7,10,645);
+          
+        separador5=new JLabel();
+        piscina.add(separador5);
+        separador5.setIcon(new ImageIcon(getClass().getResource("/Imagenes/linea.png")));
+        separador5.setBounds(600,7,10,645);
+       
+
 
         //RADIOS BUTTONS
         nadado1 = new JRadioButton("NADADOR1");
@@ -129,22 +164,7 @@ public class Windows_game1 extends JFrame {
         group.add(nadado3);
         group.add(nadado4);
         group.add(nadado5);
-        
-        
-        
-        
-        
-        
-        
-//        separador1=new JLabel();
-//        piscina.add(separador1);
-//        this.getContentPane().setBackground(Color.WHITE);
-//        separador1.setBounds(150,0,0,0);
-        
-        
-        
-
-        //Hacemos los JLabel de cada nadador
+        //We make every swimmer's JLabel
         nadador1 = new JLabel();
         nadador1.setText("Nadador 1");
         piscina.add(nadador1); //Agrega la imagen al panel
@@ -189,8 +209,8 @@ public class Windows_game1 extends JFrame {
         piscina.add(scroll);
 
         {
-            //boton de inicio del juego
-            ImageIcon start = new ImageIcon(getClass().getResource("/Imagenes/5.png"));//Colocamos la imagen en el boton
+            //Start button game
+            ImageIcon start = new ImageIcon(getClass().getResource("/Imagenes/5.png"));//We put the image on the button
             Icon icono = new ImageIcon(start.getImage().getScaledInstance(100, 50, 1));
             bntInicio = new JButton(icono);
             getContentPane().add(bntInicio);
@@ -249,7 +269,7 @@ public class Windows_game1 extends JFrame {
                                     hiloNadador4.start();
                                 } else {
                                     if (nadado5.isSelected()) {
-                                        //Aqui llamo los metodos de los hilos de cada nadador
+                                        //Here I call the methods of the threads of each swimmer
                                         nadador1.setVisible(true);
                                         Super_Metodo hiloNadador1 = new Super_Metodo(30, alto, nadador1, txtNadadores);
                                         hiloNadador1.start();//Arranca la ejecucion de cada hilo

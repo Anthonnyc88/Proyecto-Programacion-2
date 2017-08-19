@@ -70,7 +70,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="bntJuego1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Compentencia de Nadadores"/>
+        <Property name="text" type="java.lang.String" value="Swimming Competation"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntJuego1ActionPerformed"/>
@@ -78,7 +78,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="bntJuego2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Preguntas y Respuestas"/>
+        <Property name="text" type="java.lang.String" value="Questions and answers"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntJuego2ActionPerformed"/>

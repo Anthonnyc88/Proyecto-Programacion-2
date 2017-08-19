@@ -52,14 +52,14 @@ public class Windows extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        bntJuego1.setText("Compentencia de Nadadores");
+        bntJuego1.setText("Swimming Competation");
         bntJuego1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntJuego1ActionPerformed(evt);
             }
         });
 
-        bntJuego2.setText("Preguntas y Respuestas");
+        bntJuego2.setText("Questions and answers");
         bntJuego2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntJuego2ActionPerformed(evt);

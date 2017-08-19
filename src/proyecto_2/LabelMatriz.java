@@ -13,6 +13,7 @@ import static com.sun.java.accessibility.util.AWTEventMonitor.addActionListener;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -30,6 +31,8 @@ public class LabelMatriz extends JLabel implements ActionListener {
     
     //---------------------- Se asigna una el nombre al label ---------------//
     public void setNombre( int f, int c ){
+        Random rnd = new Random();//Random de pocisiones
+         //f=rnd.nextInt(2);
         setText( f + " , " + c);
     }
     //------------------------------------------------------------------------//

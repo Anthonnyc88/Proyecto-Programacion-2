@@ -20,6 +20,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
+import java.util.Random;
 
 public class Windows_game2 extends JFrame implements ActionListener {
 
@@ -51,6 +52,7 @@ public class Windows_game2 extends JFrame implements ActionListener {
         int filas = 8;
         int columnas = 5;
         String rojo="\033[31m";
+        Random rnd = new Random();
 
         //Se crea una matriz de labels segun las filas y columnas entrantes
         LabelMatriz [][] botones = new LabelMatriz[ filas ][ columnas ];
@@ -59,6 +61,8 @@ public class Windows_game2 extends JFrame implements ActionListener {
         {
             //Estando en la fila se recorrer las columnas
             for( int columna = 0 ; columna < columnas; columna++ )
+                //LabelMatriz[fila][columna] = rnd.nextInt(10);
+                
             {
                 //Se crea el boton y se agrega a las celda de la matriz
                 botones[fila][columna] = new LabelMatriz( 75 * columna, 30 * fila, 75, 30 );

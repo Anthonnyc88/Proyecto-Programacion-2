@@ -29,26 +29,23 @@ public class Super_Metodo extends Thread {
         this.txtNadadores = txtNadadores;
     }
 
-    //sobre escribiendo el metodo
     @Override
 
-    //Algoritmo de los nadadores , funciona con hilo que hace que los nadadores se muevan con una velocidad Random
+ //Swim algorithm, works with yarn that causes swimmers to move with a random speed
     public void run() {
         Random rnd = new Random();
         int numero;
         for (int i = limite - 150; i > 0; i--) {
             numero = 0 + rnd.nextInt(15);
-            //System.out.println(getName()+":"+i);
-            nadador1.setBounds(posicionX, i, 73, 100); //posicionr el label con su tamaño y ancho
+            nadador1.setBounds(posicionX, i, 73, 100); //Position the label with its size and width
 
             try {
-                sleep(numero);
-                //velocidad del hilo con el nadador que recibe la varibale random
+                sleep(numero);//Speed ​​of the thread with the swimmer receiving the varibale random
 
             } catch (Exception e) {
             }
         }
-        //no se ejecute los hilos al mismo tiempo
+        
 
         txtNadadores.setText(txtNadadores.getText() + "Llegó el " + nadador1.getText() + "\n");
 
