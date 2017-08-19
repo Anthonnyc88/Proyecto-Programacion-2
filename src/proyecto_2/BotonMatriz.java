@@ -17,10 +17,10 @@ import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-public class LabelMatriz extends JLabel implements ActionListener {
+public class BotonMatriz extends JButton implements ActionListener {
     
-    //-------- Constructor con parametros para posicionar a los LABELS ------//
-    public LabelMatriz( int pos_x, int pos_y, int ancho, int alto ){ 
+    //-------- Constructor con parametros para posicionar a los botones XD ------//
+    public BotonMatriz( int pos_x, int pos_y, int ancho, int alto ){ 
         //Se coloca el label en un lugar y se le da un tamanio
         setBounds(pos_x, pos_y, ancho, alto);
         
@@ -40,7 +40,7 @@ public class LabelMatriz extends JLabel implements ActionListener {
     //------------------ Al darle click realizara este metodo ----------------//
     public void actionPerformed( ActionEvent e ){
         //Se asigna el color de fondo azul
-        setBackground(Color.BLUE);
+//        setBackground(Color.BLUE);
         //Se asigna un color de letra color blanco
         setForeground(Color.WHITE);
     }

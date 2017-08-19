@@ -5,31 +5,6 @@
  */
 package proyecto_2;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.util.ArrayList;
-import javax.swing.ButtonGroup;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.JRadioButton;
-import javax.swing.JSpinner;
-import javax.swing.JTextField;
-import javax.swing.SpinnerNumberModel;
-import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-import static proyecto_2.Cronometro.h0;
-import static proyecto_2.Cronometro.m0;
-import static proyecto_2.Cronometro.s0;
-import static proyecto_2.Cronometro.saber;
 
 /**
  *
@@ -297,7 +272,7 @@ public class Windows_game1 extends JFrame {
                 }
             });
             
-            btnReport1 = new JButton("Reporte 1");
+            btnReport1 = new JButton("Report 1");
             getContentPane().add(btnReport1);
             btnReport1.setBounds(800, 200, 100, 25);
             btnReport1.addActionListener(new ActionListener() {
@@ -323,7 +298,7 @@ public class Windows_game1 extends JFrame {
                 }
             });
             
-            btnReport2 = new JButton("Reporte 2");
+            btnReport2 = new JButton("Report 2");
             getContentPane().add(btnReport2);
             btnReport2.setBounds(800, 230, 100, 25);
             btnReport2.addActionListener(new ActionListener() {
@@ -333,7 +308,7 @@ public class Windows_game1 extends JFrame {
                 }
             });
             
-            btnReport3 = new JButton("Reporte 3");
+            btnReport3 = new JButton("Report 3");
             getContentPane().add(btnReport3);
             btnReport3.setBounds(800, 260, 100, 25);
             btnReport3.addActionListener(new ActionListener() {
@@ -363,7 +338,7 @@ public class Windows_game1 extends JFrame {
                 }
             });
             
-            btnReport4 = new JButton("Reporte 4");
+            btnReport4 = new JButton("Report 4");
             getContentPane().add(btnReport4);
             btnReport4.setBounds(800, 290, 100, 25);
             btnReport4.addActionListener(new ActionListener() {
@@ -377,7 +352,6 @@ public class Windows_game1 extends JFrame {
                         int num = Integer.parseInt(listaNadadores[i].substring(0, 1));
                         listaGanadores[num] += 1;
                     }
-
                     int min, i;
 
                     min = listaGanadores[1];
@@ -387,12 +361,10 @@ public class Windows_game1 extends JFrame {
                             min = i;
                         }
                     }
-
                     JOptionPane.showMessageDialog(null, "El nadador con menos competencias ganadas es: " + min);
                 }
             });
-
-            btnReport5 = new JButton("Reporte 5");
+            btnReport5 = new JButton("Report 5");
             getContentPane().add(btnReport5);
             btnReport5.setBounds(800, 320, 100, 25);
             

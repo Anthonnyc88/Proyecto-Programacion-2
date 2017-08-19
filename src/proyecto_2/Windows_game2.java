@@ -20,6 +20,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.util.Random;
 
 public class Windows_game2 extends JFrame implements ActionListener {
@@ -42,34 +43,60 @@ public class Windows_game2 extends JFrame implements ActionListener {
 		//Se agrega el panel del label
         this.add(panel, BorderLayout.CENTER);
 
-		this.setSize(410, 330);
+		this.setSize(620, 620);
 		//Permite que la ventana se coloque al centro de la pantalla
 		this.setLocationRelativeTo(null);
 
 	}
 
 	public void actionPerformed( ActionEvent evt ) {
-        int filas = 8;
-        int columnas = 5;
+        int filas = 5;
+        int columnas = 8;
         String rojo="\033[31m";
         Random rnd = new Random();
 
         //Se crea una matriz de labels segun las filas y columnas entrantes
-        LabelMatriz [][] botones = new LabelMatriz[ filas ][ columnas ];
+        BotonMatriz [][] botones = new BotonMatriz[ filas ][ columnas ];
         //Se recorren las filas
         for( int fila = 0 ; fila < filas; fila++ )
         {
-            //Estando en la fila se recorrer las columnas
+            
             for( int columna = 0 ; columna < columnas; columna++ )
-                //LabelMatriz[fila][columna] = rnd.nextInt(10);
+                //botones[fila][columna] = rnd.nextInt(10);
                 
             {
-                //Se crea el boton y se agrega a las celda de la matriz
-                botones[fila][columna] = new LabelMatriz( 75 * columna, 30 * fila, 75, 30 );
-                //Se da el nombre en forma de coordenada enviando la fila y columna
-                botones[fila][columna].setNombre(fila, columna);
+               
+                botones[fila][columna] = new BotonMatriz( 75 * columna, 100 * fila, 75, 100 );
+           
+                
+                //////INICIO DEL JUEGO///////////////
+                if(fila==0 && columna==0){
+                    botones[fila][columna].setBackground(Color.yellow);
+                    botones[fila][columna].setNombre(fila, columna);
+                }
+                //Boton donde termina el juego
+                if(fila==4 && columna==7){
+                    botones[fila][columna].setBackground(Color.GREEN);
+                     botones[fila][columna].setNombre(fila, columna);
+                    
+                }
+                
+                //boton del comodin
+                if(fila==3 && columna==5){
+                    botones[fila][columna].setBackground(Color.RED);
+                     botones[fila][columna].setNombre(fila, columna);
+                    
+                }
+                    
+               
+                
+                
+                
                 //Se agrega el boton al panel
                 panel.add( botones[fila][columna] );
+                if(columna==0 && fila==0){
+                    
+                }
                 
             }
         }
