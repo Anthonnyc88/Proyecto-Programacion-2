@@ -93,37 +93,50 @@ public class Windows_game2 extends JFrame implements ActionListener {
         //The panel is updated so that the buttons are visible
         panel.updateUI();
     }
-    
-    public static void obstaculosRandom(BotonMatriz[][] botones){
-       ArrayList<String> listaObstaculos = new ArrayList();
-       
-       while (listaObstaculos.size() < 10) {
+
+    public void obstaculosRandom(BotonMatriz[][] botones) {
+        ArrayList<String> listaObstaculos = new ArrayList();
+
+        while (listaObstaculos.size() < 10) {
             int filaRandom = (int) (Math.random() * 5);
             int columnaRandom = (int) (Math.random() * 8);
             String posicion = String.valueOf(filaRandom + "," + columnaRandom);
 
             if (!(listaObstaculos.contains(posicion))) {
-                if(filaRandom == 0 && columnaRandom == 0){
+                if (filaRandom == 0 && columnaRandom == 0) {
                     // no hacer nada
-                }else{
-                    if(filaRandom == 4 && columnaRandom == 7){
+                } else {
+                    if (filaRandom == 4 && columnaRandom == 7) {
                         // no hacer nada
-                    }else{
+                    } else {
                         listaObstaculos.add(posicion);
                         botones[filaRandom][columnaRandom].setBackground(Color.RED);
-                        botones[filaRandom][columnaRandom].setNombre(filaRandom,columnaRandom);
+                        botones[filaRandom][columnaRandom].setNombre(filaRandom, columnaRandom);
                         botones[filaRandom][columnaRandom].addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                JOptionPane.showMessageDialog(null, "Prueba de pregunta");
+                                JOptionPane.showMessageDialog(null, "Has perdido el juego");
+                                dispose();//Pierda si toca los obstaculos
                             }
                         });
                     }
                 }
             }
         }
-       
-       //return listaObstaculos;
+
+        //return listaObstaculos;
+        while (listaObstaculos.size() < 11) {
+            int filaRandom = (int) (Math.random() * 5);
+            int columnaRandom = (int) (Math.random() * 8);
+            String posicion = String.valueOf(filaRandom + "," + columnaRandom);
+
+            if (!(listaObstaculos.contains(posicion))) {
+                listaObstaculos.add(posicion);
+                botones[filaRandom][columnaRandom].setBackground(Color.BLUE);
+                botones[filaRandom][columnaRandom].setNombre(filaRandom, columnaRandom);
+            }
+
+        }
     }
 
     public static void main(String args[]) {
