@@ -91,6 +91,15 @@ public class Windows_game2 extends JFrame implements ActionListener {
         //Where the game ends
         botones[4][7].setBackground(Color.GREEN);
         botones[4][7].setNombre(4, 7);
+        //BOTON DE GANAR XD
+        botones[4][7].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                Ganar a = new Ganar();
+                a.setVisible(true);
+               
+            }
+        });
         //obstaculos        
         obstaculosRandom(botones);
         //The panel is updated so that the buttons are visible
@@ -125,6 +134,8 @@ public class Windows_game2 extends JFrame implements ActionListener {
                 } else {
                     if (filaRandom == 4 && columnaRandom == 7) {
                         // no hacer nada no pinta la posicion donde termina al juego
+                        
+                        
                     } else {
                         listaObstaculos.add(posicion);
                         botones[filaRandom][columnaRandom].setBackground(Color.RED);
@@ -140,29 +151,70 @@ public class Windows_game2 extends JFrame implements ActionListener {
                 }
             }
         }
+
         //CLIK DEL BOTON DEL COMODIN AQUI LLAMARA UNA VENTANA MAS ADELANTE XD
         while (listaObstaculos.size() < 11) {
+            int filaRandom = (int) (Math.random() * 5);
+            int columnaRandom = (int) (Math.random() * 8);
+            String posicion = String.valueOf(filaRandom + "," + columnaRandom);
+            if (!(listaObstaculos.contains(posicion))) {
+                if (filaRandom == 0 && columnaRandom == 0) {
+                    // no hacer nada no pinta la posicion 0
+                } else {
+                    if (filaRandom == 4 && columnaRandom == 7) {
+                        // no hacer nada no pinta la posicion donde termina al juego
+                    } else {
+
+                        listaObstaculos.add(posicion);
+                        botones[filaRandom][columnaRandom].setBackground(Color.BLUE);
+                        botones[filaRandom][columnaRandom].setNombre(filaRandom, columnaRandom);
+                        botones[filaRandom][columnaRandom].addActionListener(new ActionListener() {
+
+                            @Override
+                            public void actionPerformed(ActionEvent ae) {
+                                //Aqui llama la ventana del comodin
+                                VentanaComodin a = new VentanaComodin();
+                                a.setVisible(true);
+
+                            }
+
+                        });
+                    }
+                }
+            }
+
+        }
+        //Este metodo lo que hace es marcar las posiciones de las preguntas , ya esta validado que no pinte el comodin y el inico y la llegada
+        while (listaObstaculos.size() < 40) {
             int filaRandom = (int) (Math.random() * 5);
             int columnaRandom = (int) (Math.random() * 8);
             String posicion = String.valueOf(filaRandom + "," + columnaRandom);
 
             if (!(listaObstaculos.contains(posicion))) {
                 listaObstaculos.add(posicion);
-                botones[filaRandom][columnaRandom].setBackground(Color.BLUE);
-                botones[filaRandom][columnaRandom].setNombre(filaRandom, columnaRandom);
-                botones[filaRandom][columnaRandom].addActionListener(new ActionListener() {
+                if (filaRandom == 0 && columnaRandom == 0) {
+                    // no hacer nada no pinta la posicion 0
+                } else {
+                    if (filaRandom == 4 && columnaRandom == 7) {
+                        // no hacer nada no pinta la posicion donde termina al juego
+                    } else {
 
-                    @Override
-                    public void actionPerformed(ActionEvent ae) {
-                        //Aqui llama la ventana del comodin
-                        VentanaComodin a = new VentanaComodin();
-                        a.setVisible(true);
-                       
+                        // botones[filaRandom][columnaRandom].setBackground(Color.PINK);
+                        botones[filaRandom][columnaRandom].setNombre(filaRandom, columnaRandom);
+                        botones[filaRandom][columnaRandom].addActionListener(new ActionListener() {
+
+                            @Override
+                            public void actionPerformed(ActionEvent ae) {
+                                JOptionPane.showMessageDialog(null, "Prueba preguntas");
+
+                            }
+
+                        });
                     }
-
-                }); 
+                }
             }
         }
+
     }
 
     public static void main(String args[]) {

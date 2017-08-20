@@ -369,8 +369,7 @@ public class Windows_game1 extends JFrame {
             btnReport5 = new JButton("Report 5");
             getContentPane().add(btnReport5);
             btnReport5.setBounds(800, 320, 100, 25);
-            
-            
+
             bntReport= new JButton("Clean");
             getContentPane().add(bntReport);
             bntReport.setBounds(800,350,100,25);
@@ -378,8 +377,7 @@ public class Windows_game1 extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
                     txtNadadores.setText("");
-                    //btnReport2.setText("");
-         
+                    
                 }
                 });
             }

@@ -94,7 +94,7 @@ public class VentanaComodin extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addComponent(numero3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(201, 201, 201)
+                        .addGap(203, 203, 203)
                         .addComponent(bntVerificar)))
                 .addContainerGap(51, Short.MAX_VALUE))
         );

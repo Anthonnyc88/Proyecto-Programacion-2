@@ -35,7 +35,9 @@ public class BotonMatriz extends JButton implements ActionListener {
     
     //------------------ Al darle click realizara este metodo ----------------//
     public void actionPerformed( ActionEvent e ){
+        //Pinta de amarillo para ir dejando el rastro
         setForeground(Color.WHITE);
+        setBackground(Color.YELLOW);
     }
     //------------------------------------------------------------------------//
 }
