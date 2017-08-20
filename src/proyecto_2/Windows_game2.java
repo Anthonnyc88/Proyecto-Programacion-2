@@ -140,8 +140,7 @@ public class Windows_game2 extends JFrame implements ActionListener {
                 }
             }
         }
-
-        //return listaObstaculos;
+        //CLIK DEL BOTON DEL COMODIN AQUI LLAMARA UNA VENTANA MAS ADELANTE XD
         while (listaObstaculos.size() < 11) {
             int filaRandom = (int) (Math.random() * 5);
             int columnaRandom = (int) (Math.random() * 8);
@@ -155,7 +154,8 @@ public class Windows_game2 extends JFrame implements ActionListener {
 
                     @Override
                     public void actionPerformed(ActionEvent ae) {
-                        JOptionPane.showMessageDialog(null, "Has seleccionado el comodin");
+                        VentanaComodin a = new VentanaComodin();
+                        a.setVisible(true);
                        
                     }
 
