@@ -42,8 +42,6 @@ import javax.swing.JOptionPane;
 
 public class Windows_game2 extends JFrame implements ActionListener {
 
-    static List preguntas = new ArrayList();
-    static List respuestas = new ArrayList();
     ArrayList<String> listaObstaculos = new ArrayList();
 
     public Windows_game2() {
@@ -99,7 +97,7 @@ public class Windows_game2 extends JFrame implements ActionListener {
         panel.updateUI();
     }
 
-    public void llenar_listas() {
+    public static void llenar_listas() {
         String[] pre = {"Una variable puede ser nula?", "Una variable String puede ser convertidad a int?", "Una variable Int puede ser convertidad a String?", "Una variable String puede ser convertidad a double?",
             "Una variable puede ser utilizada en otra clase si es privated?", "Una variable public se puede utulizar en otros metodos?", "Una variable protected puede ser modificada en otra clase?", "Una variable declarada public static es global?", "Una instancia es una variable?",
             "Una instancia es una clase aparte?", "new clase(); es una instancia?", "Una variable int puede tener decimales?", "Se pueden sumar variables String?", "Una variable double puede tener numeros enteros?",
@@ -109,9 +107,9 @@ public class Windows_game2 extends JFrame implements ActionListener {
             "Se puede retornar una variable en un metodo void?", "Format sirve para ordenar el codigo?", "Java es orientado a objetos?", "Una clase sin MAIN puede correr programas?", "Una forma de establecer el MAIN m?s rapido es escribiendo psvm?",
             "Para establecer el System.out.println mas rapido es escribiendo sout?", "Para elevar una potencia en programacion se utiliza ^ ?", "Para cerrar una declaracion de cualquier tipo en java se utiliza {}?", "Se puede declarar una variable de cualquier tipo NULL?",
             "Se puede declarar un metodo int con parametros String?", "Para ingresar informacion desde el teclado se utiliza la Clase Scanner?", "El BufferedReader se utiliza para la lectura de archivos?",};
-        //respuestas
-         String[] res = {"v", "v", "v", "f", "f", "v", "f", "v", "f", "f", "v", "f", "f", "f", "v", "v", "v", "f", "v", "f", "f", "v", "f", "v", "v", "f", "v", "f", "f", "v", "v", "f", "v", "v", "v", "v", "v", "v", "v", "v"};
 
+        //respuestas
+        String[] res = {"v", "v", "v", "f", "f", "v", "f", "v", "f", "f", "v", "f", "f", "f", "v", "v", "v", "f", "v", "f", "f", "v", "f", "v", "v", "f", "v", "f", "f", "v", "v", "f", "v", "v", "v", "v", "v", "v", "v", "v"};
 
     }
 
@@ -153,10 +151,17 @@ public class Windows_game2 extends JFrame implements ActionListener {
                 listaObstaculos.add(posicion);
                 botones[filaRandom][columnaRandom].setBackground(Color.BLUE);
                 botones[filaRandom][columnaRandom].setNombre(filaRandom, columnaRandom);
+                botones[filaRandom][columnaRandom].addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent ae) {
+                        JOptionPane.showMessageDialog(null, "Has seleccionado el comodin");
+                       
+                    }
+
+                });
             }
-
         }
-
     }
 
     public static void main(String args[]) {
