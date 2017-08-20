@@ -43,6 +43,8 @@ import javax.swing.JOptionPane;
 public class Windows_game2 extends JFrame implements ActionListener {
 
     ArrayList<String> listaObstaculos = new ArrayList();
+    ArrayList<String> listaPreguntas = new ArrayList();
+    BotonMatriz[][] botones;
 
     public Windows_game2() {
         JToolBar barraHerramientas = new JToolBar();
@@ -74,13 +76,19 @@ public class Windows_game2 extends JFrame implements ActionListener {
         Random rnd = new Random();
 
         //An array of buttons is created according to incoming rows and columns
-        BotonMatriz[][] botones = new BotonMatriz[filas][columnas];
+        botones = new BotonMatriz[filas][columnas];
         //Se recorren las filas
         for (int fila = 0; fila < filas; fila++) {
 
             for (int columna = 0; columna < columnas; columna++) {
                 botones[fila][columna] = new BotonMatriz(75 * columna, 100 * fila, 75, 100);
                 panel.add(botones[fila][columna]);
+                botones[fila][columna].addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        //accion de los botones, agregar las preguntas.
+                    }
+                });
             }
         }
 
@@ -101,13 +109,12 @@ public class Windows_game2 extends JFrame implements ActionListener {
             }
         });
         //obstaculos        
-        obstaculosRandom(botones);
+        obstaculosRandom();
         //The panel is updated so that the buttons are visible
         panel.updateUI();
     }
 
-    public static void llenar_listas() {
-        Random rnd = new Random();
+    public void llenar_listas() {
         String[] preguntas = {"Una variable puede ser nula?", "Una variable String puede ser convertidad a int?", "Una variable Int puede ser convertidad a String?", "Una variable String puede ser convertidad a double?",
             "Una variable puede ser utilizada en otra clase si es privated?", "Una variable public se puede utulizar en otros metodos?", "Una variable protected puede ser modificada en otra clase?", "Una variable declarada public static es global?", "Una instancia es una variable?",
             "Una instancia es una clase aparte?", "new clase(); es una instancia?", "Una variable int puede tener decimales?", "Se pueden sumar variables String?", "Una variable double puede tener numeros enteros?",
@@ -120,13 +127,90 @@ public class Windows_game2 extends JFrame implements ActionListener {
 
         //respuestas
         String[] res = {"v", "v", "v", "f", "f", "v", "f", "v", "f", "f", "v", "f", "f", "f", "v", "v", "v", "f", "v", "f", "f", "v", "f", "v", "v", "f", "v", "f", "f", "v", "v", "f", "v", "v", "v", "v", "v", "v", "v", "v"};
-
+        int numeroRnd = (int) (Math.random() * preguntas.length);
         
-        for (int x = 0; x < preguntas.length; x++) {
-        }
+        Object[] botonesVF = {"Verdadero", "False"};
+        String[] VF = {"v","f"};
+        
+        int opcion = JOptionPane.showOptionDialog(null, preguntas[numeroRnd], "Pregunta", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null/*icon*/, botonesVF, botonesVF[0]);
+        
+        if (res[numeroRnd].equalsIgnoreCase(VF[opcion])) {
+            //adivino  
+            System.out.println("ganó");
+            int tamano = listaObstaculos.size();
+
+            while (listaObstaculos.size() >= tamano) {
+                final int filaRandom = (int) (Math.random() * 5);
+                final int columnaRandom = (int) (Math.random() * 8);
+                String posicion = String.valueOf(filaRandom + "," + columnaRandom);
+                
+                if ((listaObstaculos.contains(posicion))) {
+                    if (filaRandom == 0 && columnaRandom == 0) {
+                        // no hacer nada no pinta la posicion 0
+                    } else {
+                        if (filaRandom == 4 && columnaRandom == 7) {
+                            // no hacer nada no pinta la posicion donde termina al juego   
+                        } else {
+                            System.out.println(posicion);
+                            listaObstaculos.remove(posicion);
+                            listaPreguntas.add(posicion);
+                            botones[filaRandom][columnaRandom].setBackground(new JButton().getBackground());
+                            botones[filaRandom][columnaRandom].setNombre(filaRandom, columnaRandom);
+                            for(ActionListener a: botones[filaRandom][columnaRandom].getActionListeners()){
+                                //botones[filaRandom][columnaRandom].removeActionListener(a);                               
+                            }
+                            botones[filaRandom][columnaRandom].addActionListener(new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent ae) {
+                                    llenar_listas();
+                                    botones[filaRandom][columnaRandom].setBackground(Color.YELLOW);
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        }else{
+            //no adivino
+            
+            System.out.println("falló");
+            int tamano = listaObstaculos.size();
+
+            while (listaObstaculos.size() <= tamano) {
+                int filaRandom = (int) (Math.random() * 5);
+                int columnaRandom = (int) (Math.random() * 8);
+                String posicion = String.valueOf(filaRandom + "," + columnaRandom);
+                
+                if (!(listaObstaculos.contains(posicion))) {
+                    if (filaRandom == 0 && columnaRandom == 0) {
+                        // no hacer nada no pinta la posicion 0
+                    } else {
+                        if (filaRandom == 4 && columnaRandom == 7) {
+                            // no hacer nada no pinta la posicion donde termina al juego   
+                        } else {
+                            System.out.println(posicion);
+                            listaObstaculos.add(posicion);
+                            listaPreguntas.remove(posicion);
+                            botones[filaRandom][columnaRandom].setBackground(Color.RED);
+                            botones[filaRandom][columnaRandom].setNombre(filaRandom, columnaRandom);
+                            for(ActionListener a: botones[filaRandom][columnaRandom].getActionListeners()){
+                                botones[filaRandom][columnaRandom].removeActionListener(a);
+                            }
+                            botones[filaRandom][columnaRandom].addActionListener(new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent ae) {
+                                    JOptionPane.showMessageDialog(null, "Has perdido el juego");
+                                    dispose();//Pierda si toca los obstaculos
+                                }
+                            });
+                        }
+                    }
+                }
+            } 
+        }   
     }
 
-    public void obstaculosRandom(BotonMatriz[][] botones) {
+    public void obstaculosRandom() {
         while (listaObstaculos.size() < 10) {
             int filaRandom = (int) (Math.random() * 5);
             int columnaRandom = (int) (Math.random() * 8);
@@ -137,9 +221,7 @@ public class Windows_game2 extends JFrame implements ActionListener {
                     // no hacer nada no pinta la posicion 0
                 } else {
                     if (filaRandom == 4 && columnaRandom == 7) {
-                        // no hacer nada no pinta la posicion donde termina al juego
-                        
-                        
+                        // no hacer nada no pinta la posicion donde termina al juego   
                     } else {
                         listaObstaculos.add(posicion);
                         botones[filaRandom][columnaRandom].setBackground(Color.RED);
@@ -189,13 +271,16 @@ public class Windows_game2 extends JFrame implements ActionListener {
 
         }
         //Este metodo lo que hace es marcar las posiciones de las preguntas , ya esta validado que no pinte el comodin y el inico y la llegada
-        while (listaObstaculos.size() < 40) {
+        for(String pos : listaObstaculos){
+            listaPreguntas.add(pos);
+        }
+        while (listaPreguntas.size() < 40) {
             int filaRandom = (int) (Math.random() * 5);
             int columnaRandom = (int) (Math.random() * 8);
             String posicion = String.valueOf(filaRandom + "," + columnaRandom);
 
-            if (!(listaObstaculos.contains(posicion))) {
-                listaObstaculos.add(posicion);
+            if (!(listaPreguntas.contains(posicion))) {
+                listaPreguntas.add(posicion);
                 if (filaRandom == 0 && columnaRandom == 0) {
                     // no hacer nada no pinta la posicion 0
                 } else {
@@ -206,13 +291,10 @@ public class Windows_game2 extends JFrame implements ActionListener {
                         // botones[filaRandom][columnaRandom].setBackground(Color.PINK);
                         botones[filaRandom][columnaRandom].setNombre(filaRandom, columnaRandom);
                         botones[filaRandom][columnaRandom].addActionListener(new ActionListener() {
-
                             @Override
                             public void actionPerformed(ActionEvent ae) {
-                                JOptionPane.showMessageDialog(null, "Prueba preguntas");
-
+                                llenar_listas();
                             }
-
                         });
                     }
                 }

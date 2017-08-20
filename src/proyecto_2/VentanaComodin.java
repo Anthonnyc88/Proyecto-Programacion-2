@@ -5,6 +5,7 @@
  */
 package proyecto_2;
 
+import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -20,19 +21,20 @@ public class VentanaComodin extends javax.swing.JFrame {
      * Creates new form VentanaComodin
      */
     public VentanaComodin() {
-        
+
         initComponents();
         setLocationRelativeTo(null);//para que nos aparesca la pantalla sentrada
         setResizable(false);
         setTitle("Proyecto 2 de Programacion");
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/cubo.jpg")).getImage());
         ((JPanel) getContentPane()).setOpaque(false);
-        ImageIcon uno = new ImageIcon(this.getClass().getResource("/Imagenes/hackin.gif"));
+        //ImageIcon uno = new ImageIcon(this.getClass().getResource("/Imagenes/hackin.gif"));
         JLabel fondo = new JLabel();
-        fondo.setIcon(uno);
-        getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
-         fondo.setBounds(0, 0, uno.getIconWidth(), uno.getIconHeight());
+//        fondo.setIcon(uno);
+//        getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
+//        fondo.setBounds(0, 0, uno.getIconWidth(), uno.getIconHeight());
         initComponents();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -52,6 +54,8 @@ public class VentanaComodin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         bntVerificar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        imprimir = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +74,15 @@ public class VentanaComodin extends javax.swing.JFrame {
 
         bntVerificar.setForeground(new java.awt.Color(204, 0, 0));
         bntVerificar.setText("Verificar");
+        bntVerificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntVerificarActionPerformed(evt);
+            }
+        });
+
+        imprimir.setColumns(20);
+        imprimir.setRows(5);
+        jScrollPane1.setViewportView(imprimir);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,20 +92,25 @@ public class VentanaComodin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(32, 32, 32)
-                                .addComponent(numero1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(56, 56, 56)
-                                .addComponent(jLabel3)
-                                .addGap(30, 30, 30)
-                                .addComponent(numero2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1))
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel4)
-                        .addGap(26, 26, 26)
-                        .addComponent(numero3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(32, 32, 32)
+                                        .addComponent(numero1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(56, 56, 56)
+                                        .addComponent(jLabel3)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(numero2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel1))
+                                .addGap(47, 47, 47)
+                                .addComponent(jLabel4)
+                                .addGap(26, 26, 26)
+                                .addComponent(numero3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(238, 238, 238)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(203, 203, 203)
                         .addComponent(bntVerificar)))
@@ -103,7 +121,9 @@ public class VentanaComodin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(jLabel1)
-                .addGap(237, 237, 237)
+                .addGap(80, 80, 80)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numero3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numero2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,6 +138,27 @@ public class VentanaComodin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bntVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntVerificarActionPerformed
+        // TODO add your handling code here:
+        
+        Random rnd = new Random();
+        int num3;
+        num3 = rnd.nextInt(10) + 1;
+        imprimir.setText(""+num3);
+        int numero;
+        
+        numero=Integer.parseInt(numero1.getText());
+        if(numero==num3){
+            imprimir.setText("Adivino");
+        }
+        else{
+            imprimir.setText("No adivino");
+        }
+            
+        
+
+    }//GEN-LAST:event_bntVerificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,10 +197,12 @@ public class VentanaComodin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntVerificar;
+    private javax.swing.JTextArea imprimir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField numero1;
     private javax.swing.JTextField numero2;
     private javax.swing.JTextField numero3;

@@ -37,7 +37,11 @@ public class BotonMatriz extends JButton implements ActionListener {
     public void actionPerformed( ActionEvent e ){
         //Pinta de amarillo para ir dejando el rastro
         setForeground(Color.WHITE);
-        setBackground(Color.YELLOW);
+        if(this.getBackground() == Color.BLUE){
+            this.setBackground(Color.BLUE);
+        }else{
+            this.setBackground(Color.YELLOW);
+        }
     }
     //------------------------------------------------------------------------//
 }
