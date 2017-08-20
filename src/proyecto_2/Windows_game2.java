@@ -154,12 +154,13 @@ public class Windows_game2 extends JFrame implements ActionListener {
 
                     @Override
                     public void actionPerformed(ActionEvent ae) {
+                        //Aqui llama la ventana del comodin
                         VentanaComodin a = new VentanaComodin();
                         a.setVisible(true);
                        
                     }
 
-                });
+                }); 
             }
         }
     }
