@@ -323,17 +323,18 @@ public class Windows_game1 extends JFrame {
                         listaGanadores[num] += 1;
                     }
                     
-                    int max,i;
+                    int max,i, nadador=0;
                     
                     max = listaGanadores[1];
 
                     for (i = 1; i < listaGanadores.length; i++) {
                         if (max < listaGanadores[i]) {
-                            max = i;
+                            max = listaGanadores[i];
+                            nadador = i;
                         }
                     }
                     
-                    JOptionPane.showMessageDialog(null, "El nadador con más competencias ganadas es: " + max);
+                    JOptionPane.showMessageDialog(null, "El nadador con más competencias ganadas es: " + nadador);
 
                 }
             });
@@ -352,16 +353,17 @@ public class Windows_game1 extends JFrame {
                         int num = Integer.parseInt(listaNadadores[i].substring(0, 1));
                         listaGanadores[num] += 1;
                     }
-                    int min, i;
+                    int min, nadador=0, i;
 
                     min = listaGanadores[1];
 
                     for (i = 1; i < listaGanadores.length; i++) {
                         if (min > listaGanadores[i]) {
-                            min = i;
+                            min = listaGanadores[i];
+                            nadador = i;
                         }
                     }
-                    JOptionPane.showMessageDialog(null, "El nadador con menos competencias ganadas es: " + min);
+                    JOptionPane.showMessageDialog(null, "El nadador con menos competencias ganadas es: " + nadador);
                 }
             });
             btnReport5 = new JButton("Report 5");
@@ -375,5 +377,4 @@ public class Windows_game1 extends JFrame {
         }
     }
 }
-
 
