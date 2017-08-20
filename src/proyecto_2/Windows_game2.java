@@ -107,7 +107,8 @@ public class Windows_game2 extends JFrame implements ActionListener {
     }
 
     public static void llenar_listas() {
-        String[] pre = {"Una variable puede ser nula?", "Una variable String puede ser convertidad a int?", "Una variable Int puede ser convertidad a String?", "Una variable String puede ser convertidad a double?",
+        Random rnd = new Random();
+        String[] preguntas = {"Una variable puede ser nula?", "Una variable String puede ser convertidad a int?", "Una variable Int puede ser convertidad a String?", "Una variable String puede ser convertidad a double?",
             "Una variable puede ser utilizada en otra clase si es privated?", "Una variable public se puede utulizar en otros metodos?", "Una variable protected puede ser modificada en otra clase?", "Una variable declarada public static es global?", "Una instancia es una variable?",
             "Una instancia es una clase aparte?", "new clase(); es una instancia?", "Una variable int puede tener decimales?", "Se pueden sumar variables String?", "Una variable double puede tener numeros enteros?",
             "Una variable long puede contener numeros de gran rango?", "Una interfaz grafica puede realizarse a codigo manual?", "Se puede caer un programa cuando un ciclo de iteracion se encicla ?", "Un caracter es lo mismo que una cadena de texto?",
@@ -120,6 +121,9 @@ public class Windows_game2 extends JFrame implements ActionListener {
         //respuestas
         String[] res = {"v", "v", "v", "f", "f", "v", "f", "v", "f", "f", "v", "f", "f", "f", "v", "v", "v", "f", "v", "f", "f", "v", "f", "v", "v", "f", "v", "f", "f", "v", "v", "f", "v", "v", "v", "v", "v", "v", "v", "v"};
 
+        
+        for (int x = 0; x < preguntas.length; x++) {
+        }
     }
 
     public void obstaculosRandom(BotonMatriz[][] botones) {
