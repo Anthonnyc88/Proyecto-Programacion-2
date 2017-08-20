@@ -49,7 +49,7 @@ public class Windows_game1 extends JFrame {
     JRadioButton nadado1, nadado2, nadado3, nadado4, nadado5;
     int contador = 0;
 
-    JButton bntInicio, btnReport1, btnReport2, btnReport3, btnReport4, btnReport5;
+    JButton bntInicio, btnReport1, btnReport2, btnReport3, btnReport4, btnReport5,bntReport;
     int x = 50, y = 0, Ancho = 1000, alto = 700;
 
     public Windows_game1() {
@@ -370,11 +370,29 @@ public class Windows_game1 extends JFrame {
             getContentPane().add(btnReport5);
             btnReport5.setBounds(800, 320, 100, 25);
             
+            
+            bntReport= new JButton("Clean");
+            getContentPane().add(bntReport);
+            bntReport.setBounds(800,350,100,25);
+            bntReport.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    txtNadadores.setText("");
+                    //btnReport2.setText("");
+         
+                }
+                });
+            }
+                    
+                    
+    
+           
+            
             setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             setBounds(x, y, Ancho, alto);
             setVisible(true);
             setResizable(false);//no poder cambiar dimensiones
         }
     }
-}
+
 
