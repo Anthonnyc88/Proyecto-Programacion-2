@@ -94,37 +94,33 @@ public class CajaFuerte extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         Random rnd = new Random();
-        int num=0;
+        int num = 0;
         num = rnd.nextInt(10) + 1;
         int a;
         Random rn = new Random();
-        int num2=0;
+        int num2 = 0;
         num2 = rn.nextInt(10) + 1;
         int b;
         Random r = new Random();
-        int num3=0;
+        int num3 = 0;
         num3 = r.nextInt(10) + 1;
         int c;
-        Timeout timeout = new Timeout();
-        timeout.start(0, 1000);
-        int contador = 3;
-
+        int contador = 0;
         a = Integer.parseInt(numero.getText());
         b = Integer.parseInt(numero2.getText());
         c = Integer.parseInt(numero3.getText());
+        while (contador <5) {
+            contador=contador+1;
+            if (a == num && b == num2 && c == num3) {
+                JOptionPane.showMessageDialog(rootPane, "Has Ganado!!!!");
+                break;
+            } else {if(contador==5){
 
-        if (a == num && b == num2 && c == num3) {
-            JOptionPane.showMessageDialog(rootPane, "Has Ganado!!!!");
-            Ganar w = new Ganar();
-            w.setVisible(true);
-
-        } else{
-            contador++;
-        }
-        if(contador!=3){
-            JOptionPane.showMessageDialog(rootPane, "Haz perdido");
-            dispose();
-            
+                JOptionPane.showMessageDialog(rootPane, "Haz perdido");
+               
+                break;
+            }
+            }
         }
     }//GEN-LAST:event_VerificarActionPerformed
 

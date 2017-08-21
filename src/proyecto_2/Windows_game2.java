@@ -251,11 +251,12 @@ public class Windows_game2 extends JFrame implements ActionListener {
                     } else {
 
                         listaObstaculos.add(posicion);
-                        listaPreguntas.remove(posicion);
+                        //listaPreguntas.remove(posicion);
                         botones[filaRandom][columnaRandom].setBackground(Color.BLUE);
                         botones[filaRandom][columnaRandom].setNombre(filaRandom, columnaRandom);
+                       // for (ActionListener a : botones[filaRandom][columnaRandom].getActionListeners()) {
+                               // botones[filaRandom][columnaRandom].removeActionListener(a);
                         botones[filaRandom][columnaRandom].addActionListener(new ActionListener() {
-
                             @Override
                             public void actionPerformed(ActionEvent ae) {
                                 //Aqui llama la ventana del comodin
@@ -267,9 +268,9 @@ public class Windows_game2 extends JFrame implements ActionListener {
 
                         });
                     }
-                }
+                
             }
-
+            }
         }
         //Este metodo lo que hace es marcar las posiciones de las preguntas , ya esta validado que no pinte el comodin y el inico y la llegada
         for (String pos : listaObstaculos) {
