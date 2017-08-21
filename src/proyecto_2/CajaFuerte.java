@@ -105,22 +105,25 @@ public class CajaFuerte extends javax.swing.JFrame {
         int num3 = 0;
         num3 = r.nextInt(10) + 1;
         int c;
-        int contador = 0;
-        a = Integer.parseInt(numero.getText());
-        b = Integer.parseInt(numero2.getText());
-        c = Integer.parseInt(numero3.getText());
-        while (contador <5) {
-            contador=contador+1;
+        int contador = 1;
+
+        boolean x = false;
+        while (contador <= 3) {
+            a = Integer.parseInt(numero.getText());
+            b = Integer.parseInt(numero2.getText());
+            c = Integer.parseInt(numero3.getText());
             if (a == num && b == num2 && c == num3) {
                 JOptionPane.showMessageDialog(rootPane, "Has Ganado!!!!");
-                break;
-            } else {if(contador==5){
 
-                JOptionPane.showMessageDialog(rootPane, "Haz perdido");
-               
-                break;
-            }
-            }
+            }else{
+          
+            contador++;
+            {
+                if (contador == 4) {
+                    JOptionPane.showMessageDialog(null, "Has perdido");
+
+                }
+            }}
         }
     }//GEN-LAST:event_VerificarActionPerformed
 
