@@ -6,6 +6,12 @@
 package proyecto_2;
 
 import java.util.Random;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import static proyecto_2.Windows_game2.contador;
 
 /**
  *
@@ -18,6 +24,16 @@ public class CajaFuerte extends javax.swing.JFrame {
      */
     public CajaFuerte() {
         initComponents();
+        setLocationRelativeTo(null);//para que nos aparesca la pantalla sentrada
+        setResizable(false);
+        setTitle("Proyecto Gestor de Juegos");
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/cubo.jpg")).getImage());
+        ((JPanel) getContentPane()).setOpaque(false);
+        ImageIcon uno = new ImageIcon(this.getClass().getResource("/Imagenes/hackin.gif"));
+        JLabel fondo = new JLabel();
+        fondo.setIcon(uno);
+        getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
+        fondo.setBounds(0, 0, uno.getIconWidth(), uno.getIconHeight());
     }
 
     /**
@@ -76,42 +92,40 @@ public class CajaFuerte extends javax.swing.JFrame {
 
     private void VerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerificarActionPerformed
         // TODO add your handling code here:
-        
-         Random rnd = new Random();
-        int num;
+
+        Random rnd = new Random();
+        int num=0;
         num = rnd.nextInt(10) + 1;
         int a;
         Random rn = new Random();
-        int num2;
+        int num2=0;
         num2 = rn.nextInt(10) + 1;
         int b;
         Random r = new Random();
-        int num3;
+        int num3=0;
         num3 = r.nextInt(10) + 1;
         int c;
         Timeout timeout = new Timeout();
         timeout.start(0, 1000);
+        int contador = 3;
 
         a = Integer.parseInt(numero.getText());
         b = Integer.parseInt(numero2.getText());
         c = Integer.parseInt(numero3.getText());
+
         if (a == num && b == num2 && c == num3) {
+            JOptionPane.showMessageDialog(rootPane, "Has Ganado!!!!");
             Ganar w = new Ganar();
             w.setVisible(true);
-            System.out.println("Adivino");
 
-        } else {
-            Perdio u = new Perdio();
-            u.setVisible(true);
-            
-            System.out.println("No adivino");
-            //dispose();
+        } else{
+            contador++;
         }
-        
-        
-               
-        
-
+        if(contador!=3){
+            JOptionPane.showMessageDialog(rootPane, "Haz perdido");
+            dispose();
+            
+        }
     }//GEN-LAST:event_VerificarActionPerformed
 
     /**

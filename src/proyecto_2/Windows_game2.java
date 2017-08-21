@@ -251,6 +251,7 @@ public class Windows_game2 extends JFrame implements ActionListener {
                     } else {
 
                         listaObstaculos.add(posicion);
+                        listaPreguntas.remove(posicion);
                         botones[filaRandom][columnaRandom].setBackground(Color.BLUE);
                         botones[filaRandom][columnaRandom].setNombre(filaRandom, columnaRandom);
                         botones[filaRandom][columnaRandom].addActionListener(new ActionListener() {
