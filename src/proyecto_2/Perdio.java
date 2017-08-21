@@ -14,19 +14,19 @@ import javax.swing.JPanel;
  *
  * @author Anthonny
  */
-public class Windows_start1 extends javax.swing.JFrame {
+public class Perdio extends javax.swing.JFrame {
 
     /**
-     * Creates new form start
+     * Creates new form Perdio
      */
-    public Windows_start1() {
+    public Perdio() {
         initComponents();
         setLocationRelativeTo(null);//para que nos aparesca la pantalla sentrada
         setResizable(false);
         setTitle("Proyecto Gestor de Juegos");
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/cubo.jpg")).getImage());
         ((JPanel) getContentPane()).setOpaque(false);
-        ImageIcon uno = new ImageIcon(this.getClass().getResource("/Imagenes/Katie.gif"));
+        ImageIcon uno = new ImageIcon(this.getClass().getResource("/Imagenes/Game.jpg"));
         JLabel fondo = new JLabel();
         fondo.setIcon(uno);
         getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
@@ -42,66 +42,21 @@ public class Windows_start1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox();
-        bntGame = new javax.swing.JButton();
-        bntAtras = new javax.swing.JButton();
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        bntGame.setText("Start Game");
-        bntGame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntGameActionPerformed(evt);
-            }
-        });
-
-        bntAtras.setText("Regresar");
-        bntAtras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntAtrasActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(bntAtras))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
-                        .addComponent(bntGame)))
-                .addContainerGap(184, Short.MAX_VALUE))
+            .addGap(0, 622, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(197, Short.MAX_VALUE)
-                .addComponent(bntGame)
-                .addGap(4, 4, 4)
-                .addComponent(bntAtras)
-                .addContainerGap())
+            .addGap(0, 387, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bntGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGameActionPerformed
-        // TODO add your handling code here:
-         Windows_game1 a = new Windows_game1();
-         dispose();
-    }//GEN-LAST:event_bntGameActionPerformed
-
-    private void bntAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAtrasActionPerformed
-        // TODO add your handling code here:
-         this.setVisible(false);
-        new Windows().setVisible(true);
-    }//GEN-LAST:event_bntAtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,28 +75,24 @@ public class Windows_start1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Windows_start1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perdio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Windows_start1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perdio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Windows_start1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perdio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Windows_start1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perdio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Windows_start1().setVisible(true);
+                new Perdio().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntAtras;
-    private javax.swing.JButton bntGame;
-    private javax.swing.JComboBox jComboBox1;
     // End of variables declaration//GEN-END:variables
 }

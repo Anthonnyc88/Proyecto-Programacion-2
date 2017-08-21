@@ -24,7 +24,7 @@ public class Windows_start2 extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);//para que nos aparesca la pantalla sentrada
         setResizable(false);
-        setTitle("Proyecto 2 de Programacion");
+        setTitle("Proyecto Gestor de Juegos");
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/cubo.jpg")).getImage());
         ((JPanel) getContentPane()).setOpaque(false);
         ImageIcon uno = new ImageIcon(this.getClass().getResource("/Imagenes/1.gif"));

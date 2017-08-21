@@ -32,10 +32,8 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-import static proyecto_2.Cronometro.h0;
-import static proyecto_2.Cronometro.m0;
-import static proyecto_2.Cronometro.s0;
-import static proyecto_2.Cronometro.saber;
+import static proyecto_2.Cronometro.onoff;
+
 
 /**
  *
@@ -43,7 +41,7 @@ import static proyecto_2.Cronometro.saber;
  */
 public class Windows_game1 extends JFrame {
 
-    JLabel nadador1, nadador2, nadador3, nadador4, nadador5, piscina, linea1, linea2 ,separador, separador1 , separador2,separador3,separador4 , separador5;
+    JLabel tiempo,nadador1, nadador2, nadador3, nadador4, nadador5, piscina, linea1, linea2 ,separador, separador1 , separador2,separador3,separador4 , separador5;
     JRadioButton botones[];
     JTextArea txtNadadores;
     JRadioButton nadado1, nadado2, nadado3, nadado4, nadado5;
@@ -70,6 +68,24 @@ public class Windows_game1 extends JFrame {
         getContentPane().add(piscina);
         this.getContentPane().setBackground(Color.BLUE);
         piscina.setBounds(100, 0, 1000, 700);
+        
+        
+        tiempo = new JLabel( "00:00:000" );
+        getContentPane().add(piscina);
+        tiempo.setFont( new Font( Font.SERIF, Font.BOLD, 50 ) );
+        tiempo.setHorizontalAlignment( JLabel.CENTER );
+        tiempo.setForeground( Color.BLUE );
+        tiempo.setBackground( Color.WHITE );
+        tiempo.setOpaque( true );
+        add( tiempo, BorderLayout.CENTER );
+    
+         
+        
+        
+        
+        
+        
+        
         
         
         ///Here we put the line that divides swimmers///
@@ -190,12 +206,11 @@ public class Windows_game1 extends JFrame {
             bntInicio = new JButton(icono);
             getContentPane().add(bntInicio);
             bntInicio.setBounds(0, 0, 100, 50);
-
+            new Cronometro();//Aqui llamamos al cronometro
             bntInicio.addActionListener(new ActionListener() {
-
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    
+                    Object o = ae.getSource();
                     txtNadadores.setText(txtNadadores.getText() + "-------------------------------------\n");
                     contador += 1;
                     
@@ -268,9 +283,10 @@ public class Windows_game1 extends JFrame {
                                 }
                             }
                         }
-                    }
-                }
+                    }        }
+                
             });
+            
             
             btnReport1 = new JButton("Report 1");
             getContentPane().add(btnReport1);
@@ -380,17 +396,14 @@ public class Windows_game1 extends JFrame {
                     
                 }
                 });
-            }
-                    
-                    
-    
-           
             
+    
             setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             setBounds(x, y, Ancho, alto);
             setVisible(true);
             setResizable(false);//no poder cambiar dimensiones
-        }
+        
     }
-
+    }
+}
 

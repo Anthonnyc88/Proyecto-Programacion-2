@@ -22,20 +22,6 @@ import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.Random;
-
-import java.awt.BorderLayout;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JToolBar;
-import javax.swing.JTextField;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -45,11 +31,10 @@ public class Windows_game2 extends JFrame implements ActionListener {
     ArrayList<String> listaObstaculos = new ArrayList();
     ArrayList<String> listaPreguntas = new ArrayList();
     BotonMatriz[][] botones;
+    static int contador;
 
     public Windows_game2() {
         JToolBar barraHerramientas = new JToolBar();
-//		txtColumnas = new JTextField();
-//		txtFilas = new JTextField();
         btnCrear = new JButton();
         panel = new JPanel(null);
         //Para que el JFrame cierre la aplicacion
@@ -103,9 +88,16 @@ public class Windows_game2 extends JFrame implements ActionListener {
         botones[4][7].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                Ganar a = new Ganar();
-                a.setVisible(true);
-               
+                if (contador >= 6) {
+                    JOptionPane.showMessageDialog(null, " Haz ganado la partida felicidades puntos ganados del juego " + contador);
+                    Ganar a = new Ganar();
+                    a.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Haz perdido la partida Cantidad de puntos ganados del juego " + contador);
+                    Perdio x = new Perdio();
+                    x.setVisible(true);
+                }
+
             }
         });
         //obstaculos        
@@ -128,13 +120,16 @@ public class Windows_game2 extends JFrame implements ActionListener {
         //respuestas
         String[] res = {"v", "v", "v", "f", "f", "v", "f", "v", "f", "f", "v", "f", "f", "f", "v", "v", "v", "f", "v", "f", "f", "v", "f", "v", "v", "f", "v", "f", "f", "v", "v", "f", "v", "v", "v", "v", "v", "v", "v", "v"};
         int numeroRnd = (int) (Math.random() * preguntas.length);
-        
+
         Object[] botonesVF = {"Verdadero", "False"};
-        String[] VF = {"v","f"};
-        
+        String[] VF = {"v", "f"};
+
         int opcion = JOptionPane.showOptionDialog(null, preguntas[numeroRnd], "Pregunta", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null/*icon*/, botonesVF, botonesVF[0]);
-        
+
         if (res[numeroRnd].equalsIgnoreCase(VF[opcion])) {
+            contador = contador + 1;
+            JOptionPane.showMessageDialog(null, "Cantidad de puntos " + contador);
+
             //adivino  
             System.out.println("ganó");
             int tamano = listaObstaculos.size();
@@ -143,7 +138,7 @@ public class Windows_game2 extends JFrame implements ActionListener {
                 final int filaRandom = (int) (Math.random() * 5);
                 final int columnaRandom = (int) (Math.random() * 8);
                 String posicion = String.valueOf(filaRandom + "," + columnaRandom);
-                
+
                 if ((listaObstaculos.contains(posicion))) {
                     if (filaRandom == 0 && columnaRandom == 0) {
                         // no hacer nada no pinta la posicion 0
@@ -156,8 +151,8 @@ public class Windows_game2 extends JFrame implements ActionListener {
                             listaPreguntas.add(posicion);
                             botones[filaRandom][columnaRandom].setBackground(new JButton().getBackground());
                             botones[filaRandom][columnaRandom].setNombre(filaRandom, columnaRandom);
-                            for(ActionListener a: botones[filaRandom][columnaRandom].getActionListeners()){
-                                //botones[filaRandom][columnaRandom].removeActionListener(a);                               
+                            for (ActionListener a : botones[filaRandom][columnaRandom].getActionListeners()) {
+
                             }
                             botones[filaRandom][columnaRandom].addActionListener(new ActionListener() {
                                 @Override
@@ -170,9 +165,13 @@ public class Windows_game2 extends JFrame implements ActionListener {
                     }
                 }
             }
-        }else{
-            //no adivino
+        } else {
+            contador = contador - 1;
+            JOptionPane.showMessageDialog(null, "se resta un punto del juego");
+            JOptionPane.showMessageDialog(null, "Cantidad puntos ganados " + contador);
             
+            //no adivino
+
             System.out.println("falló");
             int tamano = listaObstaculos.size();
 
@@ -180,7 +179,7 @@ public class Windows_game2 extends JFrame implements ActionListener {
                 int filaRandom = (int) (Math.random() * 5);
                 int columnaRandom = (int) (Math.random() * 8);
                 String posicion = String.valueOf(filaRandom + "," + columnaRandom);
-                
+
                 if (!(listaObstaculos.contains(posicion))) {
                     if (filaRandom == 0 && columnaRandom == 0) {
                         // no hacer nada no pinta la posicion 0
@@ -193,21 +192,21 @@ public class Windows_game2 extends JFrame implements ActionListener {
                             listaPreguntas.remove(posicion);
                             botones[filaRandom][columnaRandom].setBackground(Color.RED);
                             botones[filaRandom][columnaRandom].setNombre(filaRandom, columnaRandom);
-                            for(ActionListener a: botones[filaRandom][columnaRandom].getActionListeners()){
+                            for (ActionListener a : botones[filaRandom][columnaRandom].getActionListeners()) {
                                 botones[filaRandom][columnaRandom].removeActionListener(a);
                             }
                             botones[filaRandom][columnaRandom].addActionListener(new ActionListener() {
                                 @Override
                                 public void actionPerformed(ActionEvent ae) {
-                                    JOptionPane.showMessageDialog(null, "Has perdido el juego");
-                                    dispose();//Pierda si toca los obstaculos
+                                    //JOptionPane.showMessageDialog(null, "Has perdido el juego");
+                                    //dispose();//Pierda si toca los obstaculos
                                 }
                             });
                         }
                     }
                 }
-            } 
-        }   
+            }
+        }
     }
 
     public void obstaculosRandom() {
@@ -229,8 +228,8 @@ public class Windows_game2 extends JFrame implements ActionListener {
                         botones[filaRandom][columnaRandom].addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                JOptionPane.showMessageDialog(null, "Has perdido el juego");
-                                dispose();//Pierda si toca los obstaculos
+                                //JOptionPane.showMessageDialog(null, "Has perdido el juego");
+                                // dispose();//Pierda si toca los obstaculos
                             }
                         });
                     }
@@ -259,8 +258,9 @@ public class Windows_game2 extends JFrame implements ActionListener {
                             @Override
                             public void actionPerformed(ActionEvent ae) {
                                 //Aqui llama la ventana del comodin
-                                VentanaComodin a = new VentanaComodin();
+                                CajaFuerte a = new CajaFuerte();
                                 a.setVisible(true);
+                                
 
                             }
 
@@ -271,7 +271,7 @@ public class Windows_game2 extends JFrame implements ActionListener {
 
         }
         //Este metodo lo que hace es marcar las posiciones de las preguntas , ya esta validado que no pinte el comodin y el inico y la llegada
-        for(String pos : listaObstaculos){
+        for (String pos : listaObstaculos) {
             listaPreguntas.add(pos);
         }
         while (listaPreguntas.size() < 40) {
@@ -287,8 +287,6 @@ public class Windows_game2 extends JFrame implements ActionListener {
                     if (filaRandom == 4 && columnaRandom == 7) {
                         // no hacer nada no pinta la posicion donde termina al juego
                     } else {
-
-                        // botones[filaRandom][columnaRandom].setBackground(Color.PINK);
                         botones[filaRandom][columnaRandom].setNombre(filaRandom, columnaRandom);
                         botones[filaRandom][columnaRandom].addActionListener(new ActionListener() {
                             @Override
